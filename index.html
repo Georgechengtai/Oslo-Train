@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0b3d2e">
-<title>7月2日 挪威一日跟住行 · Oslo → Geiranger</title>
+<meta name="robots" content="noindex">
+<title>7月2日 Oslo→Geiranger 逐步領航</title>
 <style>
   :root{
     --green:#0b3d2e; --green2:#14724f; --lgreen:#e6f4ec;
@@ -17,21 +18,21 @@
   *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
   html{font-size:17px}
   body{margin:0; font-family:-apple-system,"PingFang HK","PingFang TC","Microsoft JhengHei",Roboto,"Noto Sans TC",sans-serif;
-       background:var(--bg); color:var(--ink); line-height:1.55; padding-bottom:70px}
+       background:var(--bg); color:var(--ink); line-height:1.6; padding-bottom:70px}
   .wrap{max-width:560px; margin:0 auto; padding:0 12px}
 
   /* ── sticky now bar ── */
   #nowbar{position:sticky; top:0; z-index:50; background:var(--green); color:#fff;
-          padding:8px 14px calc(8px + env(safe-area-inset-top)*0); box-shadow:0 2px 8px rgba(0,0,0,.25)}
-  #nowbar .row{display:flex; justify-content:space-between; align-items:baseline; max-width:560px; margin:0 auto}
+          padding:8px 14px; box-shadow:0 2px 8px rgba(0,0,0,.25)}
+  #nowbar .row{display:flex; justify-content:space-between; align-items:baseline; max-width:560px; margin:0 auto; gap:8px}
   #nowbar .clock{font-size:1.5rem; font-weight:800; letter-spacing:1px; font-variant-numeric:tabular-nums}
   #nowbar .lbl{font-size:.72rem; opacity:.85}
   #nowbar .cd{font-size:.95rem; font-weight:700; color:#ffd23f; text-align:right}
   #nowbar .cd small{display:block; font-weight:400; font-size:.7rem; color:#cfe8dc}
 
   header.hero{background:linear-gradient(160deg,var(--green) 0%,var(--green2) 90%); color:#fff;
-              padding:22px 16px 26px; text-align:center}
-  header.hero h1{margin:0 0 6px; font-size:1.45rem}
+              padding:22px 16px 24px; text-align:center}
+  header.hero h1{margin:0 0 6px; font-size:1.4rem}
   header.hero .date{display:inline-block; background:#ffd23f; color:#3a2c00; font-weight:800;
                     padding:4px 14px; border-radius:999px; font-size:1rem; margin-bottom:8px}
   header.hero p{margin:4px 0 0; font-size:.85rem; opacity:.92}
@@ -39,14 +40,13 @@
   .banner{margin:12px 0; padding:10px 14px; border-radius:12px; font-size:.9rem; font-weight:600}
   .banner.warn{background:var(--lamber); color:var(--amber); border:1.5px solid #f0c98a}
 
-  /* ── golden rules ── */
   .rules{background:var(--card); border-radius:16px; padding:14px 16px; margin:14px 0; box-shadow:0 1px 4px rgba(0,0,0,.07)}
   .rules h2{margin:0 0 8px; font-size:1.05rem; color:var(--green)}
   .rules ol{margin:0; padding-left:1.3em}
-  .rules li{margin:6px 0; font-size:.95rem}
+  .rules li{margin:7px 0; font-size:.95rem}
   .rules b{color:var(--red)}
 
-  /* ── timeline steps ── */
+  /* ── steps ── */
   .step{background:var(--card); border-radius:18px; margin:16px 0; box-shadow:0 1px 5px rgba(0,0,0,.08);
         overflow:hidden; border-left:6px solid var(--green2); position:relative}
   .step.active{border-left-color:#ffd23f; box-shadow:0 0 0 3px #ffd23f66, 0 2px 10px rgba(0,0,0,.12)}
@@ -62,10 +62,20 @@
           font-weight:800; font-size:.72rem; padding:3px 10px; border-radius:0 0 8px 8px}
   .step.active .nowtag{display:block}
 
+  /* numbered micro-steps */
+  .micro{counter-reset:m; margin:8px 0; padding:0; list-style:none}
+  .micro>li{counter-increment:m; position:relative; padding:10px 12px 10px 46px; margin:10px 0;
+            background:#fafcfa; border:1.5px solid #e2eae4; border-radius:12px; font-size:.95rem}
+  .micro>li::before{content:counter(m); position:absolute; left:10px; top:10px; width:26px; height:26px;
+            background:var(--green2); color:#fff; font-weight:800; border-radius:50%;
+            display:flex; align-items:center; justify-content:center; font-size:.9rem}
+  .see{display:block; margin-top:6px; background:var(--lgreen); border-radius:8px; padding:6px 10px; font-size:.88rem}
+  .see::before{content:"👀 眼前應該見到："; font-weight:800; color:var(--green)}
+
   /* mock departure board */
   .board{background:var(--board); border-radius:12px; padding:10px 12px; margin:10px 0; color:var(--boardtxt);
-         font-family:ui-monospace,Menlo,Consolas,monospace; font-size:.95rem; box-shadow:inset 0 0 12px #000}
-  .board .cap{color:#8fa3b0; font-size:.68rem; font-family:inherit; letter-spacing:1px; margin-bottom:6px}
+         font-family:ui-monospace,Menlo,Consolas,monospace; font-size:.92rem; box-shadow:inset 0 0 12px #000}
+  .board .cap{color:#8fa3b0; font-size:.68rem; letter-spacing:1px; margin-bottom:6px}
   .board table{width:100%; border-collapse:collapse}
   .board td{padding:3px 4px; white-space:nowrap}
   .board .hit{background:#ffd23f22; outline:2px solid #ffd23f; border-radius:4px}
@@ -73,14 +83,11 @@
   .board .arrow{color:#ffd23f}
   .boardnote{font-size:.78rem; color:var(--mut); margin:4px 2px 0}
 
-  .check{background:var(--lgreen); border-radius:12px; padding:10px 14px; margin:10px 0}
-  .check h4{margin:0 0 6px; font-size:.92rem; color:var(--green)}
-  .check ul{margin:0; padding-left:1.2em}
-  .check li{margin:5px 0; font-size:.93rem}
   .kw{background:#0b3d2e; color:#ffd23f; padding:1px 8px; border-radius:6px; font-weight:800;
       font-family:ui-monospace,Menlo,monospace; font-size:.9em; white-space:nowrap}
   .warnbox{background:var(--lred); border:1.5px solid #eab0b0; border-radius:12px; padding:10px 14px; margin:10px 0; font-size:.92rem}
   .warnbox b{color:var(--red)}
+  .warnbox .t{font-weight:800; color:var(--red)}
   .tipbox{background:var(--lblue); border-radius:12px; padding:10px 14px; margin:10px 0; font-size:.9rem}
 
   .seats{display:flex; flex-wrap:wrap; gap:6px; margin:8px 0}
@@ -89,20 +96,11 @@
   .seats .car{background:var(--green2); color:#fff; border-color:var(--green2)}
 
   .btns{display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 4px}
-  .btn{flex:1 1 30%; min-width:110px; text-align:center; text-decoration:none; padding:11px 8px;
-       border-radius:12px; font-weight:700; font-size:.92rem; border:none}
+  .btn{flex:1 1 100%; text-align:center; text-decoration:none; padding:13px 8px;
+       border-radius:12px; font-weight:800; font-size:1rem; border:none}
   .btn.map{background:var(--green2); color:#fff}
-  .btn.sv{background:var(--blue); color:#fff}
-  .btn.alt{background:#eef1ef; color:var(--ink); border:1.5px solid #d6ddd8}
-
-  /* phrase card */
-  details.phrase{background:#fffbe8; border:1.5px solid #eedc82; border-radius:12px; margin:10px 0}
-  details.phrase summary{padding:10px 14px; font-weight:700; font-size:.92rem; cursor:pointer; color:#7a5b00; list-style:none}
-  details.phrase summary::before{content:"🗣 "}
-  details.phrase .ph{padding:0 14px 12px}
-  .ph .no{font-size:1.05rem; font-weight:700; margin:6px 0 2px}
-  .ph .en{font-size:.95rem; color:#444}
-  .ph .zh{font-size:.8rem; color:var(--mut); margin-bottom:8px}
+  .btn.sv{background:var(--blue); color:#fff; font-weight:700; font-size:.92rem; flex:1 1 45%}
+  .btn.alt{background:#eef1ef; color:var(--ink); border:1.5px solid #d6ddd8; font-weight:700; font-size:.92rem; flex:1 1 45%}
 
   .doneline{display:flex; align-items:center; gap:10px; padding:10px 16px; border-top:1px dashed #d8e0da;
             background:#fafcfa; font-size:.92rem; color:var(--mut)}
@@ -118,11 +116,16 @@
              font-weight:700; font-size:.9rem; white-space:nowrap}
   .refbox{background:#f2f5f3; border-radius:10px; padding:8px 12px; margin:8px 0; font-size:.9rem}
   .refbox code{font-weight:800; font-size:1.05rem; color:var(--green)}
+  .secret:empty::before{content:"（要用群組完整連結開先顯示）"; color:var(--amber); font-size:.8rem; font-weight:400}
 
   .planb .q{font-weight:800; margin:12px 0 4px; color:var(--red); font-size:.95rem}
   .planb .a{font-size:.92rem; margin:0 0 4px}
+  .ph{background:#fffbe8; border:1.5px solid #eedc82; border-radius:10px; padding:8px 12px; margin:6px 0}
+  .ph .no{font-size:1rem; font-weight:700}
+  .ph .en{font-size:.9rem; color:#444}
+  .ph .zh{font-size:.78rem; color:var(--mut)}
 
-  footer{ text-align:center; font-size:.75rem; color:var(--mut); padding:20px 10px 30px}
+  footer{text-align:center; font-size:.75rem; color:var(--mut); padding:20px 10px 30px}
   .pill{display:inline-block; background:#eef1ef; border-radius:999px; padding:2px 10px; font-size:.75rem; color:var(--mut); margin:2px}
 </style>
 </head>
@@ -131,11 +134,11 @@
 <div id="nowbar">
   <div class="row">
     <div>
-      <div class="lbl">挪威時間 Norge 🇳🇴</div>
+      <div class="lbl">挪威時間 🇳🇴</div>
       <div class="clock" id="clockNO">--:--:--</div>
     </div>
     <div>
-      <div class="lbl" style="text-align:right">香港時間 (+6小時)</div>
+      <div class="lbl" style="text-align:right">香港 (+6h)</div>
       <div class="clock" id="clockHK" style="font-size:1.05rem; opacity:.85">--:--</div>
     </div>
     <div class="cd" id="countdown"><small>&nbsp;</small>&nbsp;</div>
@@ -144,23 +147,24 @@
 
 <header class="hero">
   <div class="date">2026年7月2日（星期四）</div>
-  <h1>Oslo → Geiranger 一日跟住行</h1>
-  <p>UNESCO Geirangerfjord in a Nutshell™ · 訂單 #5NRYEK · 5位大人</p>
-  <p style="opacity:.75">火車② 同 巴士 全程沿路都有<b>綠色牌</b>寫住 “Geirangerfjord in a Nutshell” — 見到就係跟啱路</p>
+  <h1>Oslo → Geiranger 逐步領航</h1>
+  <p>5人小隊 · UNESCO Geirangerfjord in a Nutshell™</p>
+  <p style="opacity:.8">呢頁唔會叫你「自己搵」任何嘢。<br>每一步：撳一個掣 → 跟藍點 → 對一個字。</p>
 </header>
 
 <div class="wrap">
 
   <div class="banner warn" id="datebanner" style="display:none">
-    ⚠️ 今日唔係 7 月 2 日 — 而家係「預習模式」，時間高亮只喺當日先準。
+    ⚠️ 今日唔係 7 月 2 日 — 而家係「預習模式」。今晚每人開一次呢條連結＋行一次啲街景掣，聽日就會離線照用。
   </div>
 
   <div class="rules">
-    <h2>🥇 三條黃金法則（背熟佢）</h2>
+    <h2>📌 呢頁點用（30秒讀完）</h2>
     <ol>
-      <li>認車<b>只睇「目的地名」同「開車時間」</b>，唔好記月台號碼 — 月台可能臨時改，字唔會改。</li>
-      <li>第一班 07:50 火車嘅牌會寫 <span class="kw">Trondheim</span>，<b>唔會寫 Dombås</b>！Dombås 只係中途站，呢個係最大陷阱。</li>
-      <li>一迷路，唔好周圍摸：<b>攞呢頁畀著制服嘅職員睇</b>（每一步都有挪威文求助句），或者打畀阿仔。</li>
+      <li>每張卡有個綠色大掣 <b style="color:var(--green2)">🧭 開導航</b> — 撳落去 Google Maps 已經入好正確目的地，<b style="color:var(--green2)">跟住藍點行</b>就得，唔使識路、唔使認方向。</li>
+      <li>每個動作下面有 <b style="color:var(--green2)">👀 眼前應該見到</b> — 見到嗰樣嘢先做下一步。見唔到＝未去到，企喺原地再睇一次上一步。</li>
+      <li>認車<b>只對一個字：目的地名</b>。第一班車個牌寫 <span class="kw">Trondheim</span>（<b>唔係 Dombås</b> — Dombås 只係中途站，呢個係全日最大陷阱）。</li>
+      <li>喺車上你唔使做任何嘢：<b>查票員會自己行埋嚟</b>掃你QR，唔使搵人。</li>
     </ol>
   </div>
 
@@ -169,24 +173,24 @@
     <div class="nowtag">▶ 而家做呢步</div>
     <div class="head">
       <div class="tchip"><div class="t1">07:20</div><div class="t2">前到達</div></div>
-      <div><h3>去 Oslo 中央車站（Oslo S）</h3><div class="sub">Jernbanetorget 1 · 全 Oslo 最大嗰個火車站</div></div>
+      <div><h3>去 Oslo 中央車站（Oslo S）</h3><div class="sub">Jernbanetorget 1 · 預 30 分鐘搵月台，唔會趕</div></div>
     </div>
     <div class="body">
-      <div class="check">
-        <h4>✅ 點樣知道行啱咗</h4>
-        <ul>
-          <li>大堂好多人、好多行李，天花吊住<b>大塊黑色出發屏幕</b>。</li>
-          <li>指示牌搵 <span class="kw">Tog</span>（=火車）同 <span class="kw">Spor</span>（=月台）呢兩個字。</li>
-          <li><b>07:35 前</b>要企咗喺月台（規定早15分鐘）。由大堂行去最遠月台約5分鐘。</li>
-        </ul>
-      </div>
-      <div class="tipbox">💡 早餐/水記得喺車站買定 — 之後轉車時間好緊，冇時間買嘢。車上有小賣部但選擇少。</div>
       <div class="btns">
-        <a class="btn map" href="https://www.google.com/maps/dir/?api=1&destination=Oslo+Central+Station,+Jernbanetorget+1,+Oslo&travelmode=walking">🚶 帶我行去車站</a>
-        <a class="btn sv" href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=59.9110,10.7517">👁 預先睇吓車站門口（街景）</a>
+        <a class="btn map" href="https://www.google.com/maps/dir/?api=1&destination=Oslo+Central+Station,+Jernbanetorget+1,+Oslo&travelmode=walking">🧭 開導航：由而家位置 → Oslo S</a>
+      </div>
+      <ol class="micro">
+        <li>撳上面個掣，跟藍點行到 Google Maps 話「已到達」。
+          <span class="see">好多人拖住行李箱、玻璃幕牆大堂、天花吊住<b>巨型黑色屏幕</b>寫住 <span class="kw">Avganger / Departures</span>。見到呢個屏幕＝你已經企喺啱嘅位置。</span></li>
+        <li>行到企喺其中一個大屏幕正下方，唔好再行。之後成個搵月台過程都喺呢度做（下一張卡）。</li>
+      </ol>
+      <div class="tipbox">💡 而家買定早餐、水、零食。今日之後所有轉車位都冇時間買嘢。</div>
+      <div class="btns">
+        <a class="btn sv" href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=59.9110,10.7517">👁 今晚預習：車站門口街景</a>
+        <a class="btn alt" href="https://www.google.com/maps/search/?api=1&query=Oslo+Central+Station">📍 淨係睇地圖位置</a>
       </div>
     </div>
-    <div class="doneline"><input type="checkbox" data-k="s0"> 到咗車站 ✔（打勾記錄）</div>
+    <div class="doneline"><input type="checkbox" data-k="s0"> 已經企喺大屏幕下面 ✔</div>
   </div>
 
   <!-- ═══════════ STEP 1 ═══════════ -->
@@ -194,56 +198,42 @@
     <div class="nowtag">▶ 而家做呢步</div>
     <div class="head">
       <div class="tchip"><div class="t1">07:50</div><div class="t2">開車</div></div>
-      <div><h3>火車① F6 → Dombås</h3><div class="sub">Dovre Railway · SJ Norge 營運 · 11:58 到 Dombås</div></div>
+      <div><h3>火車① 上車（F6 → 中途 Dombås 落）</h3><div class="sub">SJ Norge · 11:58 到 Dombås · 你哋有訂座</div></div>
     </div>
     <div class="body">
       <div class="board">
-        <div class="cap">AVGANG / DEPARTURES — 車站屏幕會咁樣顯示 ↓</div>
+        <div class="cap">大屏幕會係咁 — 你要搵嘅係中間嗰行 ↓</div>
         <table>
           <tr class="dim"><td>07:34</td><td>Lillehammer</td><td>RE10</td><td>Spor 11</td></tr>
           <tr class="hit"><td>07:50</td><td><b>Trondheim</b></td><td><b>F6</b></td><td>Spor <span class="arrow">■</span></td></tr>
           <tr class="dim"><td>08:02</td><td>Bergen</td><td>F4</td><td>Spor 6</td></tr>
         </table>
       </div>
-      <p class="boardnote">搵中間嗰行：<b>07:50 + Trondheim + F6</b>。月台號（Spor ■）開車前約15分鐘先跳出嚟，見到號碼就即刻行去嗰個月台。</p>
-      <div class="check">
-        <h4>✅ 上車前 3 個確認（缺一不可）</h4>
-        <ul>
-          <li>① 時間係 <span class="kw">07:50</span></li>
-          <li>② 目的地寫 <span class="kw">Trondheim</span>（我哋中途 Dombås 落車）</li>
-          <li>③ 車身有 <span class="kw">SJ</span> 字（SJ Norge，長途車）</li>
-        </ul>
-      </div>
-      <div class="warnbox">🚫 <b>唔好上</b>寫住 <b>Bergen</b>（另一條線）或者 <b>Flytoget</b>（機場快線，銀灰色）嘅車。目的地唔啱 = 唔好上，等下一個提示或問職員。</div>
-      <div class="check">
-        <h4>💺 搵位坐</h4>
-        <div class="seats"><span class="s car">車卡 Vogn 3</span><span class="s">38</span><span class="s">39</span><span class="s">40</span><span class="s">43</span><span class="s">44</span></div>
-        <ul><li>車卡號碼喺<b>車門側</b>顯示。上錯卡唔緊要，車廂內可以行過去。</li></ul>
-      </div>
-      <div class="check">
-        <h4>🚃 上咗車之後點 double-check</h4>
-        <ul>
-          <li>車廂屏幕會顯示 <span class="kw">Trondheim</span> 同下一站名 — 見到就100%啱車，可以瞓覺。</li>
-          <li>📳 <b>set 鬧鐘 11:40</b>！Dombås 大約 <b>11:58</b> 到，聽到廣播 “Dombås” 就執嘢準備落車。</li>
-          <li>唔肯定就畀車票QR或者下面句子畀查票員睇。</li>
-        </ul>
-      </div>
-      <details class="phrase">
-        <summary>迷路救命句（畀職員睇）</summary>
-        <div class="ph">
-          <div class="no">Hvilket spor går toget kl. 07:50 til Trondheim fra?</div>
-          <div class="en">Which platform does the 07:50 train to Trondheim leave from?</div>
-          <div class="zh">意思：07:50去Trondheim嘅火車喺幾號月台開？</div>
-          <div class="no">Er dette toget til Dombås?</div>
-          <div class="en">Is this the train to Dombås?</div>
-          <div class="zh">意思：呢架係咪去Dombås嘅火車？</div>
-        </div>
-      </details>
+      <ol class="micro">
+        <li>企喺屏幕下面，由上到下淨係搵 <span class="kw">07:50</span> 呢四個數字。搵到嗰行，核對佢寫住 <span class="kw">Trondheim</span>。
+          <span class="see">「07:50　Trondheim　F6」一行。（Spor＝月台號，可能仲係空白，正常。）</span></li>
+        <li><b>企喺原地等</b>「Spor」個數字彈出嚟（通常 07:35 前）。唔好周圍行、唔好跟人流。彈出邊個數字就記住佢，例如 Spor 9。</li>
+        <li>抬頭搵天花吊住嘅黑底白字牌 <span class="kw">Spor 9</span>（你嗰個數字）＋箭嘴，跟住箭嘴行。每行幾步抬頭再搵同一個數字，一直行到月台入口。
+          <span class="see">月台入口有支柱/閘口位，上面有個<b>細屏幕</b>。</span></li>
+        <li>對月台入口細屏幕：一定要寫住 <span class="kw">07:50 Trondheim</span>。啱＝行入月台。唔啱＝唔好入，行返大屏幕重做第1步。
+          <span class="see">銀白色長列車（4卡），車身有 <span class="kw">SJ</span> 字，車門邊電子屏顯示車卡號碼。</span></li>
+        <li>沿住列車行，逐個車門睇門邊個號碼，搵 <span class="kw">3</span>（＝車卡 Vogn 3）。撳門上發光按鈕開門上車。<br>
+          <b>如果剩返 5 分鐘都未搵到「3」：由任何一個門上車先！</b>入到車廂入面先慢慢行過去 3 卡。上車永遠緊要過搵卡。</li>
+        <li>入到 3 卡搵位坐低：
+          <div class="seats"><span class="s car">車卡 3</span><span class="s">38</span><span class="s">39</span><span class="s">40</span><span class="s">43</span><span class="s">44</span></div>
+          <span class="see">每個座位上方/側邊有細牌顯示座位號。</span></li>
+        <li>坐低後即刻做兩件事：① <b>set 鬧鐘 11:40</b>；② 望車廂兩端天花屏幕。
+          <span class="see">屏幕循環顯示 <span class="kw">Trondheim</span> 同下一站名 — 見到「Trondheim」＝100%上啱車，可以瞓覺。查票員稍後會自己嚟掃QR。</span></li>
+        <li>鬧鐘響（11:40）→ 執嘢著褸。屏幕顯示 <span class="kw">Dombås</span>／廣播讀「Dombås」→ 11:58 落車。呢班車唔會早過 11:58 到 Dombås，唔使驚落錯站：11:40 之後嘅<b>第一個停站</b>就係 Dombås。</li>
+      </ol>
+      <div class="warnbox"><span class="t">🚨 錯車自救（開車後15分鐘內做一次check）</span><br>
+        天花屏幕如果出現 <b>Drammen</b>、<b>Ski</b> 或 <b>Bergen</b> ＝ 上咗第二架車。咁做：①坐定唔好慌 ②下一個站落車 ③落車後<b>企喺月台唔好周圍行</b> ④撳本頁最底「Fjord Tours」電話掣報訂單編號，佢哋會安排。你唔使識講嘢：接通後講「English please」，讀出訂單編號就得。</div>
       <div class="btns">
-        <a class="btn alt" href="https://entur.no/">📱 Entur 實時班次（後備查詢）</a>
+        <a class="btn alt" href="https://entur.no/">📱 Entur 實時班次（後備）</a>
+        <a class="btn alt" href="https://www.google.com/maps/search/?api=1&query=Domb%C3%A5s+stasjon">📍 Dombås 喺邊（預習用）</a>
       </div>
     </div>
-    <div class="doneline"><input type="checkbox" data-k="s1"> 上咗火車① ✔</div>
+    <div class="doneline"><input type="checkbox" data-k="s1"> 上咗車、屏幕見到 Trondheim ✔</div>
   </div>
 
   <!-- ═══════════ STEP 2 ═══════════ -->
@@ -251,47 +241,29 @@
     <div class="nowtag">▶ 而家做呢步</div>
     <div class="head">
       <div class="tchip" style="background:var(--red)"><div class="t1">12:08</div><div class="t2">開車‼️</div></div>
-      <div><h3>Dombås 轉車（得10分鐘）</h3><div class="sub">火車② R65 Rauma Railway → Åndalsnes · 13:30 到</div></div>
+      <div><h3>Dombås 轉車 — 唔使行路，轉個身就搞掂</h3><div class="sub">火車② R65 → Åndalsnes（終點站）13:30 到</div></div>
     </div>
     <div class="body">
-      <div class="warnbox">⏱ <b>11:58 落車 → 12:08 開車，全日最緊張嘅10分鐘。</b>落車前已經著好褸、袋好晒嘢、企喺門口。</div>
-      <div class="check">
-        <h4>✅ 落車後咁做（Dombås 係好細嘅山區小站，唔會蕩失）</h4>
-        <ul>
-          <li>落車後<b>企定喺月台，唔好行出車站</b>。</li>
-          <li>四圍望：搵一架<b>短嘅</b>火車（通常得1–2卡），屏幕寫 <span class="kw">Åndalsnes</span>。</li>
-          <li>通常就喺<b>同一個或者對面月台</b>，行30秒。跟住其他攞行李嘅遊客行都得 — 大家都係轉呢班。</li>
-          <li>呢班係接駁車：<b>火車①遲少少，佢一般會等埋</b>，唔使跑到跌親。</li>
-        </ul>
-      </div>
-      <div class="board">
-        <div class="cap">DOMBÅS 月台屏幕 ↓</div>
-        <table>
-          <tr class="hit"><td>12:08</td><td><b>Åndalsnes</b></td><td><b>R65</b></td><td>Spor <span class="arrow">■</span></td></tr>
-          <tr class="dim"><td>12:22</td><td>Trondheim</td><td>F6</td><td>Spor ■</td></tr>
-        </table>
-      </div>
-      <div class="check">
-        <h4>💺 搵位 + 攞靚景</h4>
-        <div class="seats"><span class="s car">車卡 Vogn 2</span><span class="s">61</span><span class="s">62</span><span class="s">65</span><span class="s">66</span><span class="s">69</span></div>
-        <ul>
-          <li>🪟 揀<b>行車方向左手邊</b>坐：Trollveggen 大石壁（歐洲最高垂直崖）喺左邊。</li>
-          <li>途經 Kylling 石橋，車會<b>慢駛+廣播</b>影相位，唔使自己捉時機。</li>
-        </ul>
-      </div>
-      <details class="phrase">
-        <summary>迷路救命句（畀職員睇）</summary>
-        <div class="ph">
-          <div class="no">Hvor er toget til Åndalsnes? Vi har bare 10 minutter.</div>
-          <div class="en">Where is the train to Åndalsnes? We only have 10 minutes.</div>
-          <div class="zh">意思：去Åndalsnes嘅火車喺邊？我哋只有10分鐘。</div>
-        </div>
-      </details>
+      <div class="tipbox">先講定個事實你安心：<b>Dombås 係山上一個超小車站 — 得一條月台，路軌一邊一條。冇隧道、冇樓梯、冇得行錯。</b>你要搭嗰架車，就泊喺你落車嘅同一條月台，最多行 50 米。</div>
+      <ol class="micro">
+        <li>11:58 落車。<b>雙腳落地之後：企定，唔好跟任何人行，唔好向出口/停車場方向行。</b></li>
+        <li>企喺原地，慢慢望左、望右、望對面路軌 — 而家全個站得<b>兩架</b>客車：你頭先落嗰架（牌寫 Trondheim），同另一架。
+          <span class="see">另一架車＝<b>2卡</b>列車，車頭或車身電子牌寫住 <span class="kw">Åndalsnes</span>。</span></li>
+        <li>行埋去寫住 <span class="kw">Åndalsnes</span> 嗰架，撳發光按鈕上車。唔使急行：呢班係專為你哋呢班乘客接駁嘅，火車①遲到佢會等。</li>
+        <li>搵位（車細，兩步就搵到）：
+          <div class="seats"><span class="s car">車卡 2</span><span class="s">61</span><span class="s">62</span><span class="s">65</span><span class="s">66</span><span class="s">69</span></div>
+          🪟 加碼貼士：面向前進方向坐<b>左手邊</b> — Trollveggen 大石壁喺左邊。</li>
+        <li>開車後 check 一次：
+          <span class="see">車廂屏幕寫 <span class="kw">Åndalsnes</span>；大約 20 分鐘後第一個停站叫 <span class="kw">Lesja</span>。兩樣中一樣＝100%正確。之後唔使再理，終點站落車。</span></li>
+      </ol>
+      <div class="warnbox"><span class="t">🚨 如果望勻兩邊都冇第二架車</span><br>
+        即係佢未到／你哋早咗 — <b>唔好行出車站搵</b>。企喺月台，睇月台柱上嘅細屏幕，等寫住 <span class="kw">12:08 Åndalsnes</span> 嗰架車埋站。等到 12:20 都未見車 → 坐低（唔好走開），撳最底「Fjord Tours」電話掣。你人喺月台就唔會錯過任何嘢。</div>
+      <div class="tipbox">📸 途中車會喺 Kylling 石橋位<b>自動慢駛＋廣播</b>畀你影相 — 唔使自己捉時機，聽到廣播先攞手機都得。</div>
       <div class="btns">
-        <a class="btn sv" href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=62.0681,9.1253">👁 預先睇吓 Dombås 車站（街景）</a>
+        <a class="btn sv" href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=62.0681,9.1253">👁 今晚預習：Dombås 車站外觀</a>
       </div>
     </div>
-    <div class="doneline"><input type="checkbox" data-k="s2"> 轉咗車② ✔</div>
+    <div class="doneline"><input type="checkbox" data-k="s2"> 坐咗喺火車②、見到 Åndalsnes 字 ✔</div>
   </div>
 
   <!-- ═══════════ STEP 3 ═══════════ -->
@@ -299,25 +271,26 @@
     <div class="nowtag">▶ 而家做呢步</div>
     <div class="head">
       <div class="tchip"><div class="t1">13:30</div><div class="t2">到站</div></div>
-      <div><h3>Åndalsnes → 行去坐纜車</h3><div class="sub">Romsdalen Gondola 上 Nesaksla 山頂（708米）14:00–15:30</div></div>
+      <div><h3>Åndalsnes：落車 → 纜車</h3><div class="sub">纜車站喺車站對面 · 14:00–15:30 上山 · 708米</div></div>
     </div>
     <div class="body">
-      <div class="check">
-        <h4>✅ 落車後點行（超簡單，2–3分鐘）</h4>
-        <ul>
-          <li>Åndalsnes 車站喺<b>市中心海邊</b>，得一個出口方向。</li>
-          <li>出站<b>抬頭搵纜車鋼纜同大支架</b> — 纜車站（Lokstallvegen 3）就喺車站<b>正對面馬路口</b>，一眼望到。</li>
-          <li>行李冇位放？全部人行李跟身上纜車都得（有空間），或者問纜車售票處。</li>
-        </ul>
-      </div>
-      <div class="tipbox">🎟 纜車飛係由 <b>iTicket / Romsdalsgondolen</b> 另外發嘅電郵（開行前7日寄出）— 唔喺大PDF入面！上車前搵定嗰封email（記得睇spam）。</div>
-      <div class="warnbox">⏰ 山頂玩到 <b>15:45前坐返落嚟</b>（纜車10分鐘一班，落山10分鐘）。預足時間去搭17:00巴士。山頂有餐廳 Eggen，可以食晏。</div>
+      <div class="tipbox">呢程零難度：Åndalsnes 係<b>終點站</b> — 車到咗就唔會再開，全車人落晒，你想坐過站都冇得坐。</div>
       <div class="btns">
-        <a class="btn map" href="https://www.google.com/maps/dir/?api=1&origin=%C3%85ndalsnes+stasjon&destination=Romsdalsgondolen,+Lokstallvegen+3,+%C3%85ndalsnes&travelmode=walking">🚶 車站→纜車 行路地圖</a>
-        <a class="btn sv" href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=62.5674,7.6885">👁 預先睇吓車站出口（街景）</a>
+        <a class="btn map" href="https://www.google.com/maps/dir/?api=1&origin=%C3%85ndalsnes+stasjon&destination=Romsdalsgondolen,+Lokstallvegen+3,+%C3%85ndalsnes&travelmode=walking">🧭 開導航：車站 → 纜車站（200米）</a>
+      </div>
+      <ol class="micro">
+        <li>落車，跟全車人行（呢度可以跟人流，因為全部人都係去同一個方向：唯一出口）。</li>
+        <li>行出站房，企喺門口<b>抬頭望山</b>。
+          <span class="see">山坡上有<b>纜車鋼纜同白色支架</b>由山腳拉到山頂；山腳嗰座玻璃木色新建築就係纜車站，招牌 <span class="kw">Romsdalsgondolen</span>。佢喺你視線之內先開始行 — 唔會蕩失。</span></li>
+        <li>撳上面導航掣跟藍點行過去（200米，一條直路+過一次馬路）。</li>
+        <li>喺閘口出示<b>纜車QR</b>。⚠️ 纜車飛係 <b>iTicket 另外一封 email</b>（開行前7日寄到，唔喺大PDF入面）。<b>今晚就搵定嗰封email截圖</b>（搜尋「iTicket」，記得睇埋spam）。</li>
+        <li>上到山頂玩、影相、食嘢（山頂有餐廳 Eggen）。<b>set 鬧鐘 15:30</b>：響咗就去排隊搭落山纜車。15:45 前一定要喺落山隊度。</li>
+      </ol>
+      <div class="btns">
+        <a class="btn sv" href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=62.5674,7.6885">👁 今晚預習：車站門口街景（望到纜車）</a>
       </div>
     </div>
-    <div class="doneline"><input type="checkbox" data-k="s3"> 坐咗纜車 ✔</div>
+    <div class="doneline"><input type="checkbox" data-k="s3"> 上咗山頂 ✔（記住15:30鬧鐘）</div>
   </div>
 
   <!-- ═══════════ STEP 4 ═══════════ -->
@@ -325,33 +298,24 @@
     <div class="nowtag">▶ 而家做呢步</div>
     <div class="head">
       <div class="tchip" style="background:var(--red)"><div class="t1">17:00</div><div class="t2">開車</div></div>
-      <div><h3>巴士 → Geiranger（過 Trollstigen）</h3><div class="sub">Vy Buss · 20:15 到 Geiranger · 16:40 前去到巴士站</div></div>
+      <div><h3>巴士 → Geiranger（Trollstigen 山路）</h3><div class="sub">Vy Buss · 20:15 到 · 16:40 前企喺巴士站</div></div>
     </div>
     <div class="body">
-      <div class="check">
-        <h4>✅ 巴士站喺邊 + 點認車</h4>
-        <ul>
-          <li>巴士站就喺<b>火車站隔籬</b>（即係又行返落纜車對面嗰度，30秒）。</li>
-          <li>認車：車頭/車身寫 <span class="kw">UNESCO Geirangerfjord in a Nutshell</span> / <span class="kw">Fjord Tours</span>，站牌有<b>綠色牌</b>。</li>
-          <li>司機講英文，上車畀佢睇<b>車票QR（PDF最後嗰頁巴士票）</b>就得。自由坐。</li>
-        </ul>
-      </div>
-      <div class="warnbox">📸 <b>途中兩個落車影相位：Gudbrandsjuvet（10分鐘）同 Trollstigen 觀景台（35分鐘）。</b><br>
-      落車前用手機<b>影低架巴士＋車牌</b>，記住開車時間，全程跟大隊。上返車先好去廁所遠嘅位置。</div>
-      <div class="tipbox">🌧 如果天氣差/修路，巴士會改行 <b>Ørnesvingen 老鷹之路觀景台</b>代替 Trollstigen — 呢個係正常安排，唔係搭錯車。</div>
-      <details class="phrase">
-        <summary>迷路救命句（畀司機/職員睇）</summary>
-        <div class="ph">
-          <div class="no">Er dette bussen til Geiranger (Fjord Tours)?</div>
-          <div class="en">Is this the Fjord Tours bus to Geiranger?</div>
-          <div class="zh">意思：呢架係咪Fjord Tours去Geiranger嘅巴士？</div>
-        </div>
-      </details>
+      <ol class="micro">
+        <li>由纜車站行返你朝早落車嘅<b>火車站</b>（就係嚟嗰條直路行返轉頭，200米）。巴士站就喺火車站旁邊。
+          <span class="see">巴士站牌上有<b>綠色牌</b>寫住 <span class="kw">Geirangerfjord in a Nutshell</span>。企喺呢個牌下面等，唔使再郁。</span></li>
+        <li>認車一個字都唔使估：架巴士車頭電子牌／車身寫住 <span class="kw">UNESCO Geirangerfjord in a Nutshell</span> 或 <span class="kw">Fjord Tours</span>。唔係呢兩個字＝唔係你架車，繼續企。</li>
+        <li>上車畀司機掃<b>巴士QR</b>（大PDF「Bus from Åndalsnes to Geiranger」嗰頁）。自由坐。</li>
+        <li>🚨 <b>途中有兩個落車影相位</b>（Gudbrandsjuvet 10分鐘、Trollstigen 35分鐘）。每次落車前照住做：<br>
+          ① 用手機<b>影低架巴士＋車牌</b>；② 司機講集合時間嗰刻，<b>即場 set 鬧鐘（早5分鐘）</b>；③ 鬧鐘響就行返去你影嗰架巴士度。做齊三步，冇可能甩隊。</li>
+        <li>20:15 到 Geiranger 總站落車（又係終點站，全車落，冇得坐過站）。</li>
+      </ol>
+      <div class="tipbox">🌧 如果天氣差/修路，巴士會改停「Ørnesvingen 老鷹彎觀景台」代替 Trollstigen — 司機話落車影相就落，一樣照三步做。呢個係正常安排，唔係搭錯車。</div>
       <div class="btns">
-        <a class="btn map" href="https://www.google.com/maps/search/?api=1&query=%C3%85ndalsnes+skysstasjon">📍 巴士站位置</a>
+        <a class="btn map" href="https://www.google.com/maps/dir/?api=1&origin=Romsdalsgondolen,+%C3%85ndalsnes&destination=%C3%85ndalsnes+stasjon&travelmode=walking">🧭 開導航：纜車站 → 巴士站</a>
       </div>
     </div>
-    <div class="doneline"><input type="checkbox" data-k="s4"> 上咗巴士 ✔</div>
+    <div class="doneline"><input type="checkbox" data-k="s4"> 上咗綠牌巴士 ✔</div>
   </div>
 
   <!-- ═══════════ STEP 5 ═══════════ -->
@@ -359,54 +323,60 @@
     <div class="nowtag">▶ 而家做呢步</div>
     <div class="head">
       <div class="tchip"><div class="t1">20:15</div><div class="t2">到埗</div></div>
-      <div><h3>Geiranger → 小屋 Check-in</h3><div class="sub">Homlungsvegen 34（Homlong區）· 住2晚</div></div>
+      <div><h3>Geiranger → 小屋 check-in</h3><div class="sub">Homlungsvegen 34 · 沿海邊 2 公里 · 天仲光</div></div>
     </div>
     <div class="body">
-      <div class="check">
-        <h4>✅ 落巴士後</h4>
-        <ul>
-          <li>巴士停喺<b>碼頭附近、Geiranger Grill 餐廳側邊</b>（有綠色 Nutshell 牌嗰個站）。</li>
-          <li>去小屋：<b>沿海邊大路向西北行約2公里（25–30分鐘）</b>，Homlungsvegen 喺右手邊落斜。攰或者夜咗就打電話叫的士。</li>
-          <li>7月挪威<b>晚上11點先黑</b>，20:15落車天仲光晒，慢慢行唔使怕。</li>
-        </ul>
-      </div>
       <div class="btns">
-        <a class="btn map" href="https://www.google.com/maps/dir/?api=1&origin=Geiranger+ferry+quay&destination=Homlungsvegen+34,+6216+Geiranger&travelmode=walking">🚶 碼頭→小屋 行路地圖</a>
-        <a class="btn sv" href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=62.1008,7.2056">👁 預先睇吓 Geiranger 碼頭（街景）</a>
+        <a class="btn map" href="https://www.google.com/maps/dir/?api=1&origin=Geiranger+ferry+quay&destination=Homlungsvegen+34,+6216+Geiranger&travelmode=walking">🧭 開導航：巴士站 → 小屋（跟藍點行25–30分鐘）</a>
       </div>
-      <p style="font-size:.95rem">🎉 <b>搞掂！今日全部完成。</b>聽日（7月3日）嘅活動唔關呢頁事，聽朝先算。</p>
+      <ol class="micro">
+        <li>落巴士後第一件事：撳上面個掣，等藍點定咗先開步。</li>
+        <li>跟藍點行。全程唔使認路，只需每隔一陣望一望：
+          <span class="see">個海（fjord）一直喺你<b>右手邊</b>。如果海去咗左手邊＝行反咗方向，原地180度轉身跟返藍點。</span></li>
+        <li>Google Maps 話「已到達 Homlungsvegen 34」→ 搵門牌 34 號 check-in。7月挪威要晚上11點先天黑，20:15 落車天仲好光，慢慢行。</li>
+        <li>行到攰／落雨：打電話畀住宿主人嚟接（電話喺你哋訂房確認 email 度）。</li>
+      </ol>
+      <div class="btns">
+        <a class="btn sv" href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=62.1008,7.2056">👁 今晚預習：Geiranger 巴士站/碼頭街景</a>
+      </div>
+      <p style="font-size:.95rem">🎉 <b>今日完成。</b>7月3日嘅嘢聽朝先理，唔喺呢頁。</p>
     </div>
     <div class="doneline"><input type="checkbox" data-k="s5"> Check-in 咗 ✔</div>
   </div>
 
   <!-- ═══════════ PLAN B ═══════════ -->
   <section class="block planb">
-    <h2>🆘 Plan B：出事點算（先深呼吸，唔會死）</h2>
-    <div class="q">Q：趕唔切 07:50 班車？</div>
-    <p class="a">即刻打畀 Fjord Tours（下面電話）報訂單 <b>#5NRYEK</b>，同時去 Oslo S 嘅 SJ 服務櫃位畀佢哋睇車票。通常可以安排下一班（約2小時後）— 全日行程順延，纜車同巴士到時再問 Fjord Tours 點改。</p>
-    <div class="q">Q：Dombås 搭漏咗 12:08 接駁？</div>
-    <p class="a">企喺月台唔好走。呢班本身係等接駁嘅，好少會搭漏；萬一真係漏咗，即刻打 Fjord Tours ＋ 問站內/車上SJ職員下一班去 Åndalsnes 嘅車（Rauma線一日得幾班，職員會安排）。</p>
-    <div class="q">Q：搭咗上錯嘅車？</div>
-    <p class="a">搵查票員，指住呢頁同車票QR。挪威職員英文好好、好樂意幫手，會話你知喺邊個站落車調頭。唔好自己亂咁跳車。</p>
-    <div class="q">Q：電話冇網絡？</div>
-    <p class="a">呢頁開過一次就會離線照用（時間表、句子卡全部照睇）。地圖開唔到就直接問人 — 指住句子卡就得。</p>
+    <h2>🆘 Plan B（先深呼吸：今日每一段都有後備方案）</h2>
+    <div class="q">Q：趕唔切 07:50？</div>
+    <p class="a">撳下面 Fjord Tours 電話掣 → 接通講「English please」→ 讀出訂單編號（下面有）。佢哋負責幫你改成下一班，成日行程順延，纜車巴士佢哋一齊改。你唔使識講嘢，讀編號就得。</p>
+    <div class="q">Q：Dombås 等到 12:20 都冇車？</div>
+    <p class="a">人留喺月台，撳 Fjord Tours 電話掣。呢班車本身係等接駁嘅，真係甩咗都係佢哋責任，佢哋會安排。</p>
+    <div class="q">Q：上錯車？</div>
+    <p class="a">跟火車①卡入面紅色框嗰四步做：坐定 → 下一站落 → 企月台唔郁 → 打電話。<b>唔好自己臨場改計劃、唔好跳上第二架「可能啱」嘅車。</b></p>
+    <div class="q">Q：電話冇網？</div>
+    <p class="a">呢頁開過一次就離線照用（時間、步驟、字卡全部照睇）。導航開唔到就企喺原地等隊友（5個人總有一個有網）；記住規則：<b>唔肯定＝唔郁，留喺月台/站牌下面</b>，你喺嗰度就唔會錯過車。</p>
+    <div class="q">Q：真係有人埋嚟想幫手（例如查票員）？</div>
+    <p class="a">畀佢睇下面呢兩句就夠（唔使你開口）：</p>
+    <div class="ph"><div class="no">Vi skal til Åndalsnes / Geiranger. Kan du vise oss?</div><div class="en">We are going to Åndalsnes / Geiranger. Can you show us?</div><div class="zh">我哋去Åndalsnes/Geiranger，可以指俾我哋睇嗎？</div></div>
+    <div class="ph"><div class="no">Vi mistet toget. Referanse:</div><div class="en">We missed the train. Booking reference: <b class="secret" data-f="o"></b></div><div class="zh">我哋搭失咗車。訂單編號如右。</div></div>
   </section>
 
   <!-- ═══════════ CONTACTS ═══════════ -->
   <section class="block">
-    <h2>📇 訂單資料 + 緊急電話（撳掣直接打）</h2>
-    <div class="refbox">Fjord Tours 訂單編號：<code>#5NRYEK</code>（主旅客：Fuk Yuen Hui）<br>
-      火車① 票號 <code>#FP461QDC</code> · 火車② 票號 <code>#X7KWLJYA</code></div>
-    <div class="contact"><div class="who">Fjord Tours 客服<small>行程/改期/搭漏車 · 平日09:00–16:00</small></div><a href="tel:+4755557660">☎ +47 55 55 76 60</a></div>
-    <div class="contact"><div class="who">SJ Norge 火車公司<small>火車問題</small></div><a href="tel:+4761252200">☎ +47 61 25 22 00</a></div>
-    <div class="contact"><div class="who">Romsdalen 纜車<small>纜車飛問題</small></div><a href="tel:+4745724060">☎ +47 457 24 060</a></div>
-    <div class="contact"><div class="who">挪威緊急求助<small>警察112 · 救護113</small></div><a href="tel:112">☎ 112</a></div>
-    <p style="font-size:.8rem; color:var(--mut); margin:8px 0 0">貼士：出發前將車票PDF嘅QR碼<b>逐張截圖</b>存入相簿，冇網都show到。</p>
+    <h2>📇 訂單資料＋一撳即打</h2>
+    <div class="refbox">Fjord Tours 訂單編號：<code class="secret" data-f="o"></code><br>
+      火車① 票號：<code class="secret" data-f="t1"></code> · 火車② 票號：<code class="secret" data-f="t2"></code><br>
+      主旅客姓氏（MyPage 登入用）：<code class="secret" data-f="n"></code></div>
+    <div class="contact"><div class="who">Fjord Tours 客服（第一求助對象）<small>改期/搭失車/任何行程問題 · 09:00–16:00</small></div><a href="tel:+4755557660">☎ 撳呢度打</a></div>
+    <div class="contact"><div class="who">SJ Norge 火車公司<small>火車臨時取消/改點</small></div><a href="tel:+4761252200">☎ 撳呢度打</a></div>
+    <div class="contact"><div class="who">Romsdalen 纜車<small>iTicket 纜車飛收唔到</small></div><a href="tel:+4745724060">☎ 撳呢度打</a></div>
+    <div class="contact"><div class="who">挪威緊急（警察112/救護113）</div><a href="tel:112">☎ 112</a></div>
+    <p style="font-size:.8rem; color:var(--mut); margin:8px 0 0">✅ 今晚出發前做齊：① 車票PDF每頁QR<b>截圖入相簿</b> ② 搵定 iTicket 纜車email截圖 ③ 每人手機開一次呢頁＋撳一次啲街景掣。</p>
   </section>
 
   <footer>
-    只限 2026年7月2日行程 · 其他日子嘅船飛/獨木舟/滑索唔喺呢頁<br>
-    <span class="pill">F6 07:50 Oslo→Dombås</span><span class="pill">R65 12:08 Dombås→Åndalsnes</span><span class="pill">纜車 14:00</span><span class="pill">Vy巴士 17:00→Geiranger</span>
+    只限 2026年7月2日 · 7月3–5日嘅船/獨木舟/滑索唔喺呢頁<br>
+    <span class="pill">07:50 F6 Oslo→Dombås</span><span class="pill">12:08 R65→Åndalsnes</span><span class="pill">14:00 纜車</span><span class="pill">17:00 巴士→Geiranger</span>
   </footer>
 </div>
 
@@ -415,37 +385,29 @@
   var fmt = new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Oslo',hour12:false,
     year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'});
   var fmtHK = new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Hong_Kong',hour12:false,hour:'2-digit',minute:'2-digit'});
-  // key departures: [minutes-of-day, label]
   var keys = [[470,'火車① 開車 07:50'],[728,'火車② 開車 12:08'],[840,'纜車時段 14:00'],[1020,'巴士開車 17:00'],[1215,'到 Geiranger 20:15']];
 
-  function osloParts(){
+  function tick(){
     var p = {};
     fmt.formatToParts(new Date()).forEach(function(x){p[x.type]=x.value;});
-    return p;
-  }
-  function tick(){
-    var p = osloParts();
     document.getElementById('clockNO').textContent = p.hour+':'+p.minute+':'+p.second;
     document.getElementById('clockHK').textContent = fmtHK.format(new Date());
     var isDay = (p.year==='2026' && p.month==='07' && p.day==='02');
     document.getElementById('datebanner').style.display = isDay ? 'none':'block';
     var mins = (+p.hour)*60 + (+p.minute);
 
-    // countdown to next key departure
     var cd = document.getElementById('countdown'), nxt=null;
     for(var i=0;i<keys.length;i++){ if(keys[i][0] > mins){ nxt=keys[i]; break; } }
     if(isDay && nxt){
-      var d = nxt[0]-mins;
-      var h = Math.floor(d/60), m = d%60;
+      var d = nxt[0]-mins, h = Math.floor(d/60), m = d%60;
       cd.innerHTML = '<small>下一個：'+nxt[1]+'</small>仲有 '+(h>0? h+'小時':'')+m+'分鐘';
-      if(d<=20) cd.style.color = '#ff8b8b';
+      cd.style.color = d<=20 ? '#ff8b8b' : '#ffd23f';
     } else if(isDay){
       cd.innerHTML = '<small>今日行程</small>完成 🎉';
     } else {
       cd.innerHTML = '<small>7月2日當日</small>會有倒數';
     }
 
-    // highlight active step
     document.querySelectorAll('.step').forEach(function(s){
       s.classList.remove('active');
       if(isDay){
@@ -456,7 +418,24 @@
   }
   tick(); setInterval(tick,1000);
 
-  // checkbox persistence
+  // ── private data via URL fragment (#d=base64 JSON), persisted locally ──
+  // keeps booking refs out of the (public) repo; share the full link privately
+  try{
+    var h = location.hash.match(/[#&]d=([A-Za-z0-9+/=_-]+)/);
+    if(h){
+      var j = JSON.parse(decodeURIComponent(escape(atob(h[1].replace(/-/g,'+').replace(/_/g,'/')))));
+      localStorage.setItem('trip_secret', JSON.stringify(j));
+      history.replaceState(null,'',location.pathname+location.search);
+    }
+    var sec = JSON.parse(localStorage.getItem('trip_secret')||'null');
+    if(sec){
+      document.querySelectorAll('.secret').forEach(function(el){
+        var v = sec[el.dataset.f];
+        if(v) el.textContent = v;
+      });
+    }
+  }catch(e){}
+
   document.querySelectorAll('.doneline input').forEach(function(cb){
     var k='oslo2geiranger_'+cb.dataset.k;
     try{ cb.checked = localStorage.getItem(k)==='1'; }catch(e){}
@@ -467,7 +446,6 @@
     });
   });
 
-  // offline support
   if('serviceWorker' in navigator){
     try{ navigator.serviceWorker.register('./sw.js').catch(function(){}); }catch(e){}
   }
