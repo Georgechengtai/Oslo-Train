@@ -134,6 +134,23 @@
   .svnote{font-size:.75rem; color:var(--mut); margin:2px 2px 0}
   .addr{display:inline-block; background:#eef1ef; border-radius:8px; padding:2px 10px; font-size:.78rem; color:var(--mut); margin-top:4px}
 
+  .cheattab{width:100%; border-collapse:collapse; font-size:.88rem}
+  .cheattab td{padding:7px 8px; border-bottom:1px solid #edf1ee; vertical-align:top}
+  .cheattab tr:last-child td{border-bottom:none}
+  .cheattab .ct{white-space:nowrap; font-weight:800; color:var(--green); font-variant-numeric:tabular-nums; width:74px}
+
+  #qrbox{display:flex; flex-direction:column; align-items:center; gap:8px; padding:6px 0}
+  #qrbox svg{width:min(62vw,240px); height:auto; border:6px solid #fff; border-radius:8px; box-shadow:0 1px 6px rgba(0,0,0,.15)}
+  .qrhint{font-size:.8rem; color:var(--mut); text-align:center}
+  .btnrow{display:flex; gap:8px; width:100%}
+  .btnrow button{flex:1; padding:11px 8px; border-radius:12px; border:none; font-weight:800; font-size:.95rem;
+                 background:var(--green2); color:#fff; font-family:inherit}
+  .checklist{list-style:none; margin:0; padding:0}
+  .checklist li{display:flex; gap:10px; align-items:flex-start; padding:8px 0; border-bottom:1px solid #edf1ee; font-size:.92rem}
+  .checklist li:last-child{border-bottom:none}
+  .checklist input{width:22px; height:22px; flex:none; accent-color:var(--green2); margin-top:1px}
+  .checklist a{color:var(--blue); font-weight:700}
+
   footer{text-align:center; font-size:.75rem; color:var(--mut); padding:20px 10px 30px}
   .pill{display:inline-block; background:#eef1ef; border-radius:999px; padding:2px 10px; font-size:.75rem; color:var(--mut); margin:2px}
 </style>
@@ -180,6 +197,21 @@
       <figcaption><b>今日路線（Fjord Tours 官方圖）：</b>Oslo →（火車）→ Dombås →（火車）→ Åndalsnes →（巴士）→ Geiranger。下面每張相都係官方文件入面嘅實景。</figcaption>
     </figure>
   </div>
+
+  <!-- ═══════════ CHEAT CARD ═══════════ -->
+  <section class="block" id="cheat">
+    <h2>📋 一頁背卡（全日事實，冇一個字多餘）</h2>
+    <table class="cheattab">
+      <tr><td class="ct">07:35前</td><td>企咗喺月台 · 屏幕搵 <span class="kw">07:50 Trondheim F6</span></td></tr>
+      <tr><td class="ct">07:50<br>→11:58</td><td>火車① F6（SJ）→ <b>Dombås 落車</b> · 車卡 <b>3</b> · 座 38 39 40 43 44 · 📳鬧鐘11:40</td></tr>
+      <tr><td class="ct">12:08<br>→13:30</td><td>火車② R65 紅色2卡 → <span class="kw">Åndalsnes</span>（終點）· 車卡 <b>2</b> · 座 61 62 65 66 69 · 坐左邊</td></tr>
+      <tr><td class="ct">14:00<br>→15:30</td><td>纜車 Romsdalsgondolen（車站對面 Lokstallvegen 3）· 飛=iTicket email · 📳鬧鐘15:30落山</td></tr>
+      <tr><td class="ct">16:40前</td><td>企咗喺火車站旁巴士站（綠色 Nutshell 牌）</td></tr>
+      <tr><td class="ct">17:00<br>→20:15</td><td>Vy 巴士 <span class="kw">Geirangerfjord in a Nutshell</span> · QR=PDF巴士票頁 · 兩個影相位記住返車</td></tr>
+      <tr><td class="ct">20:15</td><td>Geiranger 落車（Geiranger Grill 旁）→ 行 2km 去 <b>Homlungsvegen 34</b>（海喺右手邊）</td></tr>
+      <tr><td class="ct">求救</td><td>訂單 <b class="secret" data-f="o"></b> · Fjord Tours ☎ +47 55 55 76 60 · 唔肯定＝企喺原地</td></tr>
+    </table>
+  </section>
 
   <!-- ═══════════ STEP 0 ═══════════ -->
   <div class="step" data-start="0" data-end="470" id="s0">
@@ -398,12 +430,39 @@
     <div class="ph"><div class="no">Vi mistet toget. Referanse:</div><div class="en">We missed the train. Booking reference: <b class="secret" data-f="o"></b></div><div class="zh">我哋搭失咗車。訂單編號如右。</div></div>
   </section>
 
+  <!-- ═══════════ SHARE QR ═══════════ -->
+  <section class="block">
+    <h2>📲 畀隊友入呢頁（開會/食飯時亮出嚟）</h2>
+    <div id="qrbox">
+      <div id="qrsvg"></div>
+      <div class="qrhint" id="qrhint">隊友用相機App掃 → 揀用 Safari / Chrome 開（唔好留喺WhatsApp內置瀏覽器）→ 開到後「加至主畫面」。呢個QR已包埋訂單編號，掃完就齊。</div>
+      <div class="btnrow">
+        <button id="copylink">🔗 複製完整連結</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ TONIGHT CHECKLIST ═══════════ -->
+  <section class="block">
+    <h2>✅ 領隊今晚檢查清單（做一項剔一項）</h2>
+    <ul class="checklist">
+      <li><input type="checkbox" data-k="c1"> 5部手機都開過本頁一次（之後冇網都用到），並「加至主畫面」</li>
+      <li><input type="checkbox" data-k="c2"> 車票PDF每頁QR<b>截圖入相簿</b>（火車①②＋巴士）</li>
+      <li><input type="checkbox" data-k="c3"> 搵到 <b>iTicket 纜車email</b> 截圖（搜「iTicket」，睇埋spam）</li>
+      <li><input type="checkbox" data-k="c4"> 漫遊/eSIM 開咗 · 帶尿袋（全日靠手機導航）</li>
+      <li><input type="checkbox" data-k="c5"> 睇明日天氣：<a href="https://www.yr.no/en/search?q=%C3%85ndalsnes">Åndalsnes</a> · <a href="https://www.yr.no/en/search?q=Geiranger">Geiranger</a>（差天氣＝巴士改行老鷹彎，正常）</li>
+      <li><input type="checkbox" data-k="c6"> set 朝早鬧鐘（酒店→Oslo S 路程 + 07:20 前到）</li>
+      <li><input type="checkbox" data-k="c7"> 隊友分工：1人負責睇QR畀司機/查票員，1人負責睇本頁指路，其他人負責唔好走散</li>
+    </ul>
+  </section>
+
   <!-- ═══════════ CONTACTS ═══════════ -->
   <section class="block">
     <h2>📇 訂單資料＋一撳即打</h2>
     <div class="refbox">Fjord Tours 訂單編號：<code class="secret" data-f="o"></code><br>
       火車① 票號：<code class="secret" data-f="t1"></code> · 火車② 票號：<code class="secret" data-f="t2"></code><br>
-      主旅客姓氏（MyPage 登入用）：<code class="secret" data-f="n"></code></div>
+      主旅客姓氏（MyPage 登入用）：<code class="secret" data-f="n"></code><br>
+      <a href="#" id="manualrefs" style="font-size:.8rem">✏️ 資料冇顯示？撳呢度手動輸入</a></div>
     <div class="contact"><div class="who">Fjord Tours 客服（第一求助對象）<small>改期/搭失車/任何行程問題 · 09:00–16:00</small></div><a href="tel:+4755557660">☎ 撳呢度打</a></div>
     <div class="contact"><div class="who">SJ Norge 火車公司<small>火車臨時取消/改點</small></div><a href="tel:+4761252200">☎ 撳呢度打</a></div>
     <div class="contact"><div class="who">Romsdalen 纜車<small>iTicket 纜車飛收唔到</small></div><a href="tel:+4745724060">☎ 撳呢度打</a></div>
@@ -418,12 +477,15 @@
   </footer>
 </div>
 
+<script src="qr.js"></script>
 <script>
 (function(){
   var fmt = new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Oslo',hour12:false,
     year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'});
   var fmtHK = new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Hong_Kong',hour12:false,hour:'2-digit',minute:'2-digit'});
-  var keys = [[470,'火車① 開車 07:50'],[728,'火車② 開車 12:08'],[840,'纜車時段 14:00'],[1020,'巴士開車 17:00'],[1215,'到 Geiranger 20:15']];
+  // leader deadlines (act-by times), not just departures
+  var keys = [[455,'⚠ 07:35 前上月台'],[470,'07:50 火車①開車'],[728,'12:08 火車②開車'],
+              [930,'15:30 排隊落山'],[1000,'⚠ 16:40 前到巴士站'],[1020,'17:00 巴士開車'],[1215,'20:15 到 Geiranger']];
 
   function tick(){
     var p = {};
@@ -458,6 +520,35 @@
 
   // ── private data via URL fragment (#d=base64 JSON), persisted locally ──
   // keeps booking refs out of the (public) repo; share the full link privately
+  function getSecret(){
+    try{ return JSON.parse(localStorage.getItem('trip_secret')||'null'); }catch(e){ return null; }
+  }
+  function applySecrets(){
+    var sec = getSecret();
+    if(!sec) return;
+    document.querySelectorAll('.secret').forEach(function(el){
+      var v = sec[el.dataset.f];
+      if(v) el.textContent = v;
+    });
+  }
+  function fullLink(){
+    var base = location.href.split('#')[0];
+    var sec = getSecret();
+    if(sec){
+      try{ base += '#d='+btoa(unescape(encodeURIComponent(JSON.stringify(sec)))); }catch(e){}
+    }
+    return base;
+  }
+  function renderQR(){
+    var box = document.getElementById('qrsvg');
+    if(!box || typeof qrcode !== 'function') return;
+    try{
+      var qr = qrcode(0,'M');
+      qr.addData(fullLink());
+      qr.make();
+      box.innerHTML = qr.createSvgTag({cellSize:4, margin:4, scalable:true});
+    }catch(e){ box.textContent = 'QR生成失敗，用複製連結掣'; }
+  }
   try{
     var h = location.hash.match(/[#&]d=([A-Za-z0-9+/=_-]+)/);
     if(h){
@@ -465,22 +556,38 @@
       localStorage.setItem('trip_secret', JSON.stringify(j));
       history.replaceState(null,'',location.pathname+location.search);
     }
-    var sec = JSON.parse(localStorage.getItem('trip_secret')||'null');
-    if(sec){
-      document.querySelectorAll('.secret').forEach(function(el){
-        var v = sec[el.dataset.f];
-        if(v) el.textContent = v;
-      });
-    }
   }catch(e){}
+  applySecrets(); renderQR();
 
-  document.querySelectorAll('.doneline input').forEach(function(cb){
+  var copyBtn = document.getElementById('copylink');
+  if(copyBtn) copyBtn.addEventListener('click', function(){
+    var url = fullLink();
+    function done(){ copyBtn.textContent='✅ 已複製，去群組貼上'; setTimeout(function(){copyBtn.textContent='🔗 複製完整連結';},2500); }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(done, function(){ window.prompt('長按複製呢條連結：', url); });
+    } else { window.prompt('長按複製呢條連結：', url); }
+  });
+
+  var manual = document.getElementById('manualrefs');
+  if(manual) manual.addEventListener('click', function(ev){
+    ev.preventDefault();
+    var sec = getSecret() || {};
+    var o = window.prompt('輸入 Fjord Tours 訂單編號（睇車票PDF第一頁 Order reference）：', sec.o||'');
+    if(o){ sec.o = o.trim(); }
+    var n = window.prompt('輸入主旅客姓氏（MyPage 登入用，可跳過）：', sec.n||'');
+    if(n){ sec.n = n.trim(); }
+    try{ localStorage.setItem('trip_secret', JSON.stringify(sec)); }catch(e){}
+    applySecrets(); renderQR();
+  });
+
+  document.querySelectorAll('.doneline input, .checklist input').forEach(function(cb){
     var k='oslo2geiranger_'+cb.dataset.k;
+    var step = cb.closest('.step');
     try{ cb.checked = localStorage.getItem(k)==='1'; }catch(e){}
-    if(cb.checked) cb.closest('.step').classList.add('done');
+    if(cb.checked && step) step.classList.add('done');
     cb.addEventListener('change',function(){
       try{ localStorage.setItem(k, cb.checked?'1':'0'); }catch(e){}
-      cb.closest('.step').classList.toggle('done', cb.checked);
+      if(step) step.classList.toggle('done', cb.checked);
     });
   });
 

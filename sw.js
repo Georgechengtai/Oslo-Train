@@ -1,5 +1,5 @@
-const CACHE = 'oslo-geiranger-jul2-v2';
-const ASSETS = ['./', './index.html',
+const CACHE = 'oslo-geiranger-jul2-v3';
+const ASSETS = ['./', './index.html', './qr.js',
   './img/map.jpg', './img/oslo-s.jpg', './img/dombas.jpg', './img/andalsnes.jpg',
   './img/geiranger-stop.jpg', './img/trollstigen.jpg', './img/gudbrandsjuvet.jpg'];
 
@@ -14,14 +14,19 @@ self.addEventListener('activate', e => {
   );
 });
 
-// network-first, fall back to cache (so updates land, but offline still works)
+// network-first with cache fallback; never cache error responses
+// (githack rate-limit pages must not poison the offline copy)
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
   e.respondWith(
     fetch(e.request).then(res => {
-      const copy = res.clone();
-      caches.open(CACHE).then(c => c.put(e.request, copy)).catch(() => {});
-      return res;
+      if (res.ok) {
+        const copy = res.clone();
+        caches.open(CACHE).then(c => c.put(e.request, copy)).catch(() => {});
+        return res;
+      }
+      // bad gateway / rate-limited: prefer the good cached copy if we have one
+      return caches.match(e.request, { ignoreSearch: true }).then(hit => hit || res);
     }).catch(() => caches.match(e.request, { ignoreSearch: true }))
   );
 });
