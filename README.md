@@ -25,23 +25,20 @@ safe to host on a public site.
 
 ## Hosting (free)
 
-This repo is currently **private**, which is why raw.githack /
-HTMLPreview return 404 and GitHub Pages is unavailable on the Free plan.
-Two ways to get a working URL:
+The repo is public, so the site is served directly from the branch:
 
-**Option A — GitHub Pages (recommended):**
-1. Repo → **Settings → General → Danger Zone → Change visibility → Public**
-   (safe: no personal data is in the files)
-2. Repo → **Settings → Pages** → Source: *Deploy from a branch* →
-   branch `claude/norway-trip-nav-helper-uwgg8h` → `/ (root)` → Save
-3. Wait ~1 minute. URL: `https://georgechengtai.github.io/Oslo-Train/`
+```
+https://raw.githack.com/Georgechengtai/Oslo-Train/claude/norway-trip-nav-helper-uwgg8h/index.html
+```
 
-**Option B — Netlify Drop (repo stays private):**
-1. Download `index.html` and `sw.js` from this branch
-2. Put both in a folder, drag the folder onto https://app.netlify.com/drop
-3. You get a public URL immediately (free account needed)
+**Nicer permanent URL (GitHub Pages):** a deploy workflow is included
+(`.github/workflows/pages.yml`), but GitHub requires the Pages *site* to
+be created once by a repo admin — a workflow token cannot do it
+("Resource not accessible by integration"). One-time step:
+**Settings → Pages → Source: GitHub Actions**. After that every push
+deploys automatically to `https://georgechengtai.github.io/Oslo-Train/`.
 
-Then share the URL **with the `#d=` fragment appended** (see group chat)
+Share the URL **with the `#d=` fragment appended** (see group chat)
 so booking references appear on each phone.
 
 ## Before the trip (tonight, 2 minutes per person)
