@@ -1,5 +1,7 @@
-const CACHE = 'oslo-geiranger-jul2-v1';
-const ASSETS = ['./', './index.html'];
+const CACHE = 'oslo-geiranger-jul2-v2';
+const ASSETS = ['./', './index.html',
+  './img/map.jpg', './img/oslo-s.jpg', './img/dombas.jpg', './img/andalsnes.jpg',
+  './img/geiranger-stop.jpg', './img/trollstigen.jpg', './img/gudbrandsjuvet.jpg'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
