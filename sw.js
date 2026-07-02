@@ -1,5 +1,5 @@
-const CACHE = 'oslo-geiranger-jul2-v4';
-const ASSETS = ['./', './index.html', './spots.html', './qr.js',
+const CACHE = 'oslo-geiranger-jul2-v5';
+const ASSETS = ['./', './index.html', './spots.html', './evening.html', './qr.js',
   './img/map.jpg', './img/oslo-s.jpg', './img/dombas.jpg', './img/andalsnes.jpg',
   './img/geiranger-stop.jpg', './img/trollstigen.jpg', './img/gudbrandsjuvet.jpg',
   './img/romsdalen.jpg', './img/geiranger-view.jpg'];
