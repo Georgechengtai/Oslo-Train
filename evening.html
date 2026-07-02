@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0b3d2e">
 <meta name="robots" content="noindex">
-<title>20:15 之後 · Geiranger 今晚加碼指南</title>
+<title>20:15 之後 · 返屋企＋屋企周邊 babysit 指南</title>
 <style>
   :root{
     --green:#0b3d2e; --green2:#14724f; --lgreen:#e6f4ec;
@@ -29,7 +29,7 @@
 
   header.hero{background:linear-gradient(160deg,var(--green) 0%,var(--green2) 90%); color:#fff;
               padding:20px 16px 22px; text-align:center}
-  header.hero h1{margin:0 0 6px; font-size:1.35rem}
+  header.hero h1{margin:0 0 6px; font-size:1.3rem}
   header.hero .date{display:inline-block; background:#ffd23f; color:#3a2c00; font-weight:800;
                     padding:3px 14px; border-radius:999px; font-size:.95rem; margin-bottom:8px}
   header.hero p{margin:4px 0 0; font-size:.85rem; opacity:.92}
@@ -39,10 +39,10 @@
 
   .opt{background:var(--card); border-radius:18px; margin:16px 0; box-shadow:0 1px 5px rgba(0,0,0,.08);
        overflow:hidden; border-left:6px solid var(--green2)}
-  .opt.nogo{border-left-color:var(--red)}
+  .opt.tmr{border-left-color:#9aa8a0}
   .opt .inner{padding:12px 16px 16px}
   .opt h2{margin:4px 0 2px; font-size:1.12rem; color:var(--green)}
-  .opt.nogo h2{color:var(--red)}
+  .opt.tmr h2{color:var(--mut)}
   .meta{display:flex; gap:6px; flex-wrap:wrap; margin:6px 0}
   .meta span{background:#eef1ef; border-radius:999px; padding:2px 10px; font-size:.76rem; color:var(--mut); font-weight:700}
   .go{background:var(--lgreen); border-radius:12px; padding:9px 12px; margin:8px 0; font-size:.9rem}
@@ -52,7 +52,9 @@
   .walkcheck{background:var(--lblue); border-radius:12px; padding:9px 12px; margin:8px 0; font-size:.9rem}
   .walkcheck h3{margin:0 0 4px; font-size:.85rem; color:var(--blue)}
   .walkcheck ol{margin:0; padding-left:1.3em}
-  .walkcheck li{margin:4px 0}
+  .walkcheck li{margin:5px 0}
+  .see{display:block; margin-top:4px; background:var(--lgreen); border-radius:8px; padding:5px 9px; font-size:.85rem}
+  .see::before{content:"👀 眼前應該見到："; font-weight:800; color:var(--green)}
   .kw{background:#0b3d2e; color:#ffd23f; padding:1px 8px; border-radius:6px; font-weight:800;
       font-family:ui-monospace,Menlo,monospace; font-size:.9em; white-space:nowrap}
   .btns{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 2px}
@@ -78,158 +80,139 @@
 <body>
 
 <div id="topbar">
-  <div class="t">🌗 20:15 之後 · 今晚加碼</div>
+  <div class="t">🌗 20:15 之後 · 返屋企之旅</div>
   <div class="clock"><small>挪威</small><span id="clockNO">--:--</span></div>
 </div>
 
 <header class="hero">
-  <div class="date">2026年7月2日 · 日光去到約23:00</div>
-  <h1>Geiranger 黃昏自由時間指南</h1>
-  <p>你哋地圖上：紅圈＝村口瀑布 · 圓角方格＝上谷（Løstad/Flydalsjuvet一帶）· 長方框＝63號公路更上段</p>
-  <p style="opacity:.8">口訣：<b>圈＝必去 · 圈→方格＝有力先去 · 長方框＝今晚唔好行路去</b></p>
+  <div class="date">2026年7月2日晚 · 日光去到約23:00</div>
+  <h1>返屋企嗰 2km 就係今晚嘅景點</h1>
+  <p>屋企已確認：<b>Homlungsvegen 34</b>（峽灣西南岸 Homlong）</p>
+  <p style="opacity:.8">瀑布梯級／Flydalsjuvet／63號公路 → 全部改聽日。<br>今晚：黃金時段行返屋企 ＋ 屋企周邊三寶。</p>
 </header>
 
 <div class="wrap">
 
   <!-- schematic -->
   <section class="block">
-    <h2>🗺 成個晚上一張圖（示意圖，跟導航掣行）</h2>
-    <svg class="schematic" viewBox="0 0 560 430" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
-      <rect width="560" height="430" fill="#eef6f0" rx="14"/>
-      <!-- fjord -->
-      <path d="M0,80 L200,80 Q250,86 260,110 L260,140 Q250,160 200,158 L0,150 Z" fill="#bcdcec"/>
-      <text x="30" y="122" font-size="15" fill="#3a6f8c" font-weight="bold">Geirangerfjord ↖ 峽灣</text>
-      <!-- home NW -->
-      <circle cx="40" cy="60" r="10" fill="#14724f"/>
-      <text x="58" y="56" font-size="14" fill="#0b3d2e" font-weight="bold">🏠 Homlungsvegen 34</text>
-      <text x="58" y="73" font-size="12" fill="#5b6b63">（訂單文件寫嘅屋企 · 沿岸行25-30分鐘）</text>
-      <!-- village -->
-      <rect x="255" y="95" width="120" height="56" rx="10" fill="#fff" stroke="#14724f" stroke-width="2.5"/>
-      <text x="268" y="118" font-size="14" font-weight="bold" fill="#0b3d2e">Geiranger 村</text>
-      <text x="268" y="137" font-size="12" fill="#5b6b63">巴士站·碼頭·餐廳</text>
-      <!-- stairs / circle -->
-      <line x1="315" y1="151" x2="330" y2="215" stroke="#14724f" stroke-width="5" stroke-dasharray="7 5"/>
-      <circle cx="332" cy="228" r="26" fill="none" stroke="#d33" stroke-width="5"/>
-      <text x="366" y="222" font-size="14" font-weight="bold" fill="#b91c1c">紅圈＝瀑布梯級</text>
-      <text x="366" y="240" font-size="12" fill="#5b6b63">Fossevandring ~300級 · 來回45分鐘</text>
-      <!-- trail to Flydalsjuvet -->
-      <line x1="332" y1="254" x2="300" y2="330" stroke="#14724f" stroke-width="5" stroke-dasharray="7 5"/>
-      <text x="338" y="300" font-size="12" fill="#5b6b63">跟「Flydalsjuvet」路牌</text>
-      <text x="338" y="316" font-size="12" fill="#5b6b63">上坡 · 單程約70分鐘</text>
-      <circle cx="292" cy="345" r="11" fill="#1d4ed8"/>
-      <text x="310" y="342" font-size="14" font-weight="bold" fill="#1d4ed8">Flydalsjuvet 崖位 ★</text>
-      <text x="310" y="359" font-size="12" fill="#5b6b63">經典明信片位 · 圈→方格嗰條「線」嘅終點</text>
-      <!-- Lostad square -->
-      <rect x="180" y="330" width="86" height="48" rx="12" fill="none" stroke="#d33" stroke-width="5"/>
-      <text x="188" y="351" font-size="13" font-weight="bold" fill="#b91c1c">圓角方格</text>
-      <text x="188" y="368" font-size="11" fill="#5b6b63">Løstad 農地</text>
-      <!-- road 63 continue -->
-      <path d="M292,356 Q330,400 420,405" stroke="#8a8a8a" stroke-width="5" fill="none" stroke-dasharray="3 6"/>
-      <rect x="428" y="380" width="118" height="44" rx="6" fill="none" stroke="#b91c1c" stroke-width="5"/>
-      <text x="436" y="399" font-size="12" font-weight="bold" fill="#b91c1c">長方框 Waterfall view</text>
-      <text x="436" y="415" font-size="11" fill="#b91c1c">行路☠ 唔好 · 要車</text>
+    <h2>🗺 今晚一張圖（示意圖 · 實際行路撳綠掣跟藍點）</h2>
+    <svg class="schematic" viewBox="0 0 560 400" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+      <rect width="560" height="400" fill="#eef6f0" rx="14"/>
+      <!-- fjord water band across upper area -->
+      <path d="M0,20 L560,20 L560,150 Q420,175 300,185 Q160,196 40,240 L0,250 Z" fill="#bcdcec"/>
+      <text x="200" y="80" font-size="16" fill="#3a6f8c" font-weight="bold">Geirangerfjord（行嗰陣水一直喺右手邊）</text>
+      <!-- village bottom right -->
+      <rect x="400" y="270" width="146" height="76" rx="10" fill="#fff" stroke="#14724f" stroke-width="2.5"/>
+      <text x="412" y="294" font-size="14" font-weight="bold" fill="#0b3d2e">Geiranger 村</text>
+      <text x="412" y="312" font-size="11.5" fill="#5b6b63">① 巴士落車＝黃圈位</text>
+      <text x="412" y="328" font-size="11.5" fill="#5b6b63">（Geiranger Grill 旁）</text>
+      <!-- shore road -->
+      <path d="M400,300 Q300,280 220,255 Q140,230 70,195" stroke="#14724f" stroke-width="6" fill="none" stroke-dasharray="9 6"/>
+      <text x="205" y="295" font-size="12.5" fill="#0b3d2e" font-weight="bold">② 沿岸路 · 唯一原則：</text>
+      <text x="205" y="312" font-size="12.5" fill="#0b3d2e" font-weight="bold">有得揀就揀貼住水嗰條</text>
+      <text x="230" y="332" font-size="11.5" fill="#5b6b63">~2km · 25–30分鐘 · 平緩</text>
+      <!-- Homlong -->
+      <circle cx="60" cy="185" r="12" fill="#14724f"/>
+      <text x="20" y="150" font-size="15" font-weight="bold" fill="#0b3d2e">③ Homlong 屋企區</text>
+      <text x="20" y="168" font-size="12" fill="#5b6b63">🏠 34號 · 🛶 獨木舟中心 · 🪨 石灘</text>
+      <!-- kayak flag -->
+      <rect x="20" y="235" width="230" height="52" rx="10" fill="#fff3e0" stroke="#f0c98a" stroke-width="2"/>
+      <text x="32" y="257" font-size="12.5" fill="#7a4a06" font-weight="bold">⭐ 聽朝 09:15 獨木舟集合就喺呢區</text>
+      <text x="32" y="275" font-size="11.5" fill="#7a4a06">今晚順路認定門口＝聽朝零壓力</text>
       <!-- church -->
-      <circle cx="420" cy="95" r="9" fill="#b45309"/>
-      <text x="436" y="92" font-size="13" font-weight="bold" fill="#b45309">⛪ 白色小教堂</text>
-      <text x="436" y="108" font-size="11" fill="#5b6b63">村口行上10分鐘 · 靜</text>
-      <text x="14" y="416" font-size="11" fill="#8a9a90">示意圖唔係比例 · 實際行路一律撳綠色導航掣跟藍點</text>
+      <circle cx="520" cy="240" r="8" fill="#b45309"/>
+      <text x="440" y="238" font-size="12" font-weight="bold" fill="#b45309">⛪ 小教堂（出發前加碼）</text>
+      <!-- tomorrow zone -->
+      <rect x="400" y="356" width="146" height="34" rx="8" fill="none" stroke="#9aa8a0" stroke-width="2" stroke-dasharray="5 4"/>
+      <text x="410" y="378" font-size="11.5" fill="#5b6b63">↓ 村後山：瀑布/崖位＝聽日</text>
+      <text x="14" y="388" font-size="11" fill="#8a9a90">唔係比例 · 太陽今晚23:00先落山，慢慢行</text>
     </svg>
   </section>
 
-  <!-- decision -->
-  <section class="block">
-    <h2>🧠 20:15 落車嗰刻，三條問題決定今晚</h2>
-    <div class="go">① 而家幾多點？<b>21:00 前放低行李出到門口</b> → 崖位（選項B）開綠燈；過咗 21:00 → 做 A 或 C。</div>
-    <div class="go">② 有冇落雨？<b>落雨/路濕</b> → B 轉紅燈（梯級＋石面滑），做 A（瀑布喺雨天反而更勁）。</div>
-    <div class="go">③ 對腳點？今日已經纜車＋巴士成日 — <b>有一個人話攰，成隊做 C</b>。聽日仲有獨木舟。</div>
-  </section>
-
-  <!-- Option A -->
+  <!-- Leg 1 -->
   <div class="opt" id="a">
     <div class="inner">
-      <h2>選項 A｜紅圈：瀑布梯級 Fossevandring</h2>
-      <div class="meta"><span>來回約45分鐘</span><span>~300級樓梯</span><span>零迷路風險</span><span>你哋「今晚必去」嗰個圈</span></div>
-      <p style="font-size:.92rem">由碼頭邊起步，沿 Storfossen 瀑布一路上到挪威峽灣中心（Norsk Fjordsenter）。成條路起晒欄杆石級，係村內唯一「邊行邊畀水花照面」嘅路。</p>
-      <div class="walkcheck"><h3>👣 一路向前指標（每一步證明你行緊啱）</h3>
+      <h2>第①段｜落車點出發（黃圈位）</h2>
+      <div class="meta"><span>20:15 落車</span><span>行李跟身</span></div>
+      <figure class="shot">
+        <img src="img/geiranger-stop.jpg" alt="Geiranger 巴士站位置" loading="lazy">
+        <figcaption><b>官方相：你落車嘅黃圈位（Geiranger Grill 旁）。</b>相入面個碼頭同遊艇區，就係你哋接住沿岸行嘅起點方向。</figcaption>
+      </figure>
+      <div class="walkcheck"><h3>👣 出發程序</h3>
         <ol>
-          <li>起點：碼頭附近搵 <span class="kw">Fossevandring</span> 指示牌／直接向瀑布聲行。</li>
-          <li>全程<b>瀑布喺你身邊、水聲不斷</b> — 聽唔到水聲＝行咗出去，退返轉頭。</li>
-          <li>頂＝玻璃幕牆建築（峽灣中心）。想快啲返：原路落，村燈喺腳下就係方向。</li>
+          <li>落車企定，撳下面綠掣，<b>等藍點定咗先開步</b>。
+            <span class="see">Google Maps 條線由你腳下沿住海邊向西北拉去 Homlungsvegen 34。</span></li>
+          <li>有力嘅話先加碼10分鐘：白色小教堂喺村口山腰（藍掣②），影完先出發。攰就跳過，聽日都得。</li>
         </ol>
       </div>
-      <div class="go"><b>GO：</b>任何時間、任何體力都得 — 呢個係保底項目。</div>
       <div class="btns">
-        <a class="btn map" href="https://www.google.com/maps/dir/?api=1&origin=Geiranger+Grill,+Geiranger&destination=Norsk+Fjordsenter,+Geiranger&travelmode=walking">🧭 導航：碼頭 → 峽灣中心（沿瀑布梯級）</a>
+        <a class="btn map" href="https://www.google.com/maps/dir/?api=1&origin=Geiranger+Grill,+Geiranger&destination=Homlungsvegen+34,+6216+Geiranger&travelmode=walking">🧭 ① 導航：落車位 → 屋企 34號</a>
+        <a class="btn map" style="background:#b45309" href="https://www.google.com/maps/dir/?api=1&origin=Geiranger+Grill,+Geiranger&destination=Geiranger+kyrkje&travelmode=walking">⛪ ② 加碼：先去小教堂（10分鐘）</a>
       </div>
     </div>
   </div>
 
-  <!-- Option B -->
+  <!-- Leg 2 -->
   <div class="opt" id="b">
     <div class="inner">
-      <h2>選項 B｜圈→方格嗰條線：行上 Flydalsjuvet 崖位</h2>
-      <div class="meta"><span>來回2–2.5小時</span><span>單程~4km／爬升300米+</span><span>遊客口碑第一嘅打卡位</span></div>
-      <p style="font-size:.92rem">你哋想查嘅「圈同方格之間嗰條線」就係呢條路：瀑布梯級頂再跟路牌上山，終點係伸出崖邊嘅大石 — 成個 Geirangerfjord 做背景嗰張經典相就喺度影。你哋圓角方格（Løstad 農地）就喺崖位隔籬，順路望埋。</p>
-      <figure class="shot">
-        <img src="img/geiranger-view.jpg" alt="高處望 Geirangerfjord" loading="lazy">
-        <figcaption>官方相：高處望落峽灣嘅角度（示意）— 崖位影出嚟就係呢種構圖，不過係你哋做主角。</figcaption>
-      </figure>
-      <div class="walkcheck"><h3>👣 一路向前指標</h3>
+      <h2>第②段｜沿岸 2km（今晚正菜）</h2>
+      <div class="meta"><span>25–30分鐘</span><span>平緩</span><span>21:00–22:00 光線最靚</span></div>
+      <p style="font-size:.92rem">呢段路本身就係打卡位：右手邊成條 UNESCO 峽灣，郵輪走晒之後水面平到反光，村燈喺背後越拉越遠。唔使趕 — 天光到23:00。</p>
+      <div class="walkcheck"><h3>👣 一路向前指標（babysit 版）</h3>
         <ol>
-          <li>行完選項A嘅梯級到頂（呢段＝共用）。</li>
-          <li>之後每個分岔口<b>只跟一個字：<span class="kw">Flydalsjuvet</span></b> 路牌。冇牌嘅岔口＝行大條嗰邊、繼續上坡。</li>
-          <li>方向自檢：<b>上山時峽灣一直喺你背後／右後方</b>；如果峽灣走咗去你面前＝掉咗頭。</li>
-          <li>到達指標：見到<b>停車場＋觀景平台</b>＝到。崖石位喺平台下方少少，排隊影相。</li>
-          <li>回程指標：<b>望住峽灣／村燈方向落山</b>就一定啱；落到聽到瀑布聲＝返到梯級段。</li>
+          <li>全程<b>一條大原則：水喺右手邊</b>。水去咗左手邊＝掉咗頭，原地180°轉身。</li>
+          <li>路口點揀：<b>邊條路貼住水就行邊條</b>。上斜離開海邊嗰啲支路一律唔理。</li>
+          <li>中段自檢：回頭望 —
+            <span class="see">村同碼頭喺你<b>後面</b>越嚟越細；前面海灣對面山壁越嚟越近。啱晒。</span></li>
+          <li>就到嘅指標：
+            <span class="see">路邊開始見到<b>Homlungsvegen 門牌號碼</b>＋營地木屋群；見到<b>獨木舟/皮艇</b>擺喺岸邊＝你已經入咗屋企區。</span></li>
+          <li>最後：搵<b>門牌 34</b>。Google Maps 話「已到達」之後先逐個門牌對，唔使心急。</li>
         </ol>
       </div>
-      <div class="go"><b>GO 條件（三個都要中）：</b>21:00 前出門 ＋ 冇雨 ＋ 冇人話攰。23:00 前天光，時間係夠嘅。</div>
-      <div class="stop"><b>NO-GO：</b>過21:00／落雨／有人攰 → 唔好硬上。替代：聽日朝早先上（光線仲靚），或者問住宿主人幫手叫車上去（車程10分鐘）— 崖位唔會走。</div>
+      <div class="go"><b>後備：</b>真係攰到行唔郁／落大雨 → 打畀住宿主人嚟接（電話喺訂房確認 email）。呢條唔係考驗，係散步。</div>
       <div class="btns">
-        <a class="btn map" href="https://www.google.com/maps/dir/?api=1&origin=Norsk+Fjordsenter,+Geiranger&destination=Flydalsjuvet,+Geiranger&travelmode=walking">🧭 導航：梯級頂 → Flydalsjuvet</a>
-        <a class="btn sv" href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=62.0920,7.2030">👁 崖位一帶街景（預覽）</a>
+        <a class="btn sv" href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=62.1008,7.2056">👁 起點碼頭街景（預覽）</a>
+        <a class="btn sv" href="https://www.google.com/maps/search/?api=1&query=Homlungsvegen+34,+6216+Geiranger">📍 終點喺地圖邊度</a>
       </div>
-      <p class="svnote">街景黑畫面＝該點冇影過，唔緊要。⚠️ 唔好行 63 號車路上去 — 彎多冇行人路；一律行路牌指嘅行山徑。</p>
+      <p class="svnote">街景黑畫面＝該點冇影過；沿岸小路街景可能唔全 — 靠藍點＋「水右手邊」就夠。</p>
     </div>
   </div>
 
-  <!-- Option C -->
+  <!-- Leg 3: around home -->
   <div class="opt" id="c">
     <div class="inner">
-      <h2>選項 C｜保底組合：碼頭黃昏 ＋ 白色小教堂</h2>
-      <div class="meta"><span>30–40分鐘</span><span>基本平路</span><span>攰都行到</span></div>
-      <p style="font-size:.92rem">碼頭邊繞一圈（郵輪走晒之後成個海灣得返你哋），再行上村口山腰嘅白色八角小教堂（1842年），長凳位望成條峽灣 — 21:00–22:00 嘅斜陽光線最靚。</p>
-      <div class="walkcheck"><h3>👣 一路向前指標</h3>
+      <h2>第③段｜屋企周邊三寶（放低行李之後）</h2>
+      <div class="meta"><span>全部5分鐘內</span><span>拖鞋級</span></div>
+      <div class="walkcheck"><h3>🛶 三寶一：Scout 聽朝獨木舟集合點（最有用嘅一件事）</h3>
         <ol>
-          <li>碼頭段：水一直喺你身邊＝啱。</li>
-          <li>教堂段：向<b>白色尖頂</b>行 — 成條村得一座，抬頭見到就唔會迷路。</li>
+          <li>聽朝 <b>09:30 獨木舟、09:15 要到</b> — 集合點 <span class="kw">Geiranger Kayak Center, Homlong</span> 就喺你哋屋企呢一區、海邊。</li>
+          <li>今晚趁光行過去認定：
+            <span class="see">岸邊一排<b>彩色獨木舟／皮艇架</b>＋小屋。影低張相＋記低由 34 號行過去要幾分鐘（估計3–5分鐘內）。</span></li>
+          <li>聽朝著好防水衫褲直接行過去 — 零導航壓力食早餐。</li>
         </ol>
       </div>
-      <div class="go"><b>GO：</b>永遠得。呢個係「唔想諗嘢」嘅選項。</div>
-      <div class="btns">
-        <a class="btn map" href="https://www.google.com/maps/dir/?api=1&origin=Geiranger+Grill,+Geiranger&destination=Geiranger+kyrkje&travelmode=walking">🧭 導航：碼頭 → 小教堂</a>
+      <div class="walkcheck"><h3>🪨 三寶二：門口石灘／小碼頭</h3>
+        <ol><li>屋企區落到水邊就係石灘位 — <b>望返成條峽灣＋村燈</b>嘅私家角度，遊客唔會嚟到呢邊。21:30–22:30 斜陽金光，今日壓軸大合照喺呢度影。</li></ol>
       </div>
+      <div class="walkcheck"><h3>🌌 三寶三：23:00 嘅「唔黑夜晚」</h3>
+        <ol><li>臨瞓前出門口企兩分鐘 — 7月頭嘅挪威夜晚係<b>永遠唔完全黑</b>嘅深藍色，峽灣得返水聲。同屋企人視像打卡嘅最佳時刻（香港嗰邊啱啱朝早5點……都係算啦，聽朝先）。</li></ol>
+      </div>
+      <div class="btns">
+        <a class="btn map" href="https://www.google.com/maps/dir/?api=1&origin=Homlungsvegen+34,+6216+Geiranger&destination=Geiranger+Kayak+Center,+Homlong,+Geiranger&travelmode=walking">🧭 導航：屋企 → 獨木舟集合點（scout用）</a>
+      </div>
+      <p class="svnote">如果 Google 搵唔到 kayak center 個 pin：沿岸搵獨木舟架就係 — 佢哋成排艇擺喺出面，好難錯過。</p>
     </div>
   </div>
 
-  <!-- Rect = no-go -->
-  <div class="opt nogo" id="d">
+  <!-- tomorrow -->
+  <div class="opt tmr" id="d">
     <div class="inner">
-      <h2>長方框（63號公路 Waterfall view）｜今晚行路＝🚫</h2>
-      <div class="meta"><span>離村6km+</span><span>髮夾彎車路</span><span>冇行人路</span></div>
-      <div class="stop"><b>調查結果：唔好行路去。</b>你哋框住嗰個「Waterfall view」喺去 Dalsnibba 方向嘅63號公路高段 — 過咗 Flydalsjuvet 之後全部係髮夾彎車路，黃昏行路上去唔安全亦唔值。</div>
-      <div class="go"><b>正確食法：</b>聽日或者後日<b>坐車</b>去 — 順便直上 <b>Dalsnibba Skywalk（1500米，遊客口碑三甲之首）</b>，Waterfall view 係車程中間嘅停車位。問住宿主人叫車／睇吓有冇 Dalsnibba 早晨團。今晚俾 A/B/C 完成任務。</div>
+      <h2>已改聽日（7月3日）｜村後山嗰堆</h2>
+      <div class="meta"><span>你哋決定：行＋搭車</span></div>
+      <p style="font-size:.9rem">紅圈瀑布梯級（Fossevandring，~300級）、Flydalsjuvet 崖位、63號公路 Waterfall view／Dalsnibba — 全部聽日先。時間縫：獨木舟 12:00 完 → 滑索 14:00 開始（集合 Geirangervegen 139），<b>中間得兩個鐘</b>，只夠做瀑布梯級＋食晏；崖位／Dalsnibba 要 15:30 滑索完之後或者搭車。詳細 go/no-go 聽日朝早問我攞。</p>
+      <div class="stop"><b>不變嘅鐵律：</b>63號公路高段（你哋長方框）唔好行路去 — 髮夾彎冇行人路，一定係車。</div>
     </div>
   </div>
-
-  <!-- home note -->
-  <section class="block">
-    <h2>🏠 重要：屋企喺邊？（發現一個矛盾）</h2>
-    <p style="font-size:.9rem">你哋張地圖將「屋企」方格畫喺 <b>Løstad（上谷，62.0888, 7.2010）</b>；但訂單文件寫住宿係 <b>Homlungsvegen 34（峽灣岸邊，村嘅西北面）</b> — 兩個位置<b>一南一北完全相反</b>。開門口前用 Airbnb app 條地址㩒一次導航確認。影響：如果真係 Løstad，咁 Flydalsjuvet（選項B）變咗你哋門口15分鐘嘅私家景點，今晚必去；如果係 Homlungsvegen，B 嘅來回時間照計。</p>
-    <div class="btns">
-      <a class="btn map" href="https://www.google.com/maps/dir/?api=1&origin=Geiranger+Grill,+Geiranger&destination=Homlungsvegen+34,+6216+Geiranger&travelmode=walking">🧭 屋企如果係 Homlungsvegen 34：由碼頭行25-30分鐘</a>
-    </div>
-  </section>
 
   <!-- QR -->
   <section class="block">
@@ -243,7 +226,7 @@
   <a class="backlink" href="spots.html">📸 打卡＋吹水頁</a>
   <a class="backlink" href="index.html">🧭 領航頁（車票／導航／緊急電話）</a>
 
-  <footer>只限 2026年7月2日晚 · 距離／時間為一般行山資料，現場以路牌同體力為準</footer>
+  <footer>只限 2026年7月2日晚 · 屋企＝Homlungsvegen 34（已確認）· 相片：Fjord Tours 官方文件</footer>
 </div>
 
 <script src="qr.js"></script>
