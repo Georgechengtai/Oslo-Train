@@ -22,11 +22,18 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - name: Stage site under secret path
+        run: |
+          mkdir -p _site/070379d2b38501916a417fc257204b4d54710b727cc25876
+          cp index.html qr.js sw.js _site/070379d2b38501916a417fc257204b4d54710b727cc25876/
+          cp -r img _site/070379d2b38501916a417fc257204b4d54710b727cc25876/img
+          printf '<!DOCTYPE html><title>·</title><meta name="robots" content="noindex">' > _site/index.html
+          printf '<!DOCTYPE html><title>·</title>' > _site/404.html
       - uses: actions/configure-pages@v5
         with:
           enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
       - id: deployment
         uses: actions/deploy-pages@v4
