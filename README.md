@@ -23,13 +23,27 @@ injected once via a `#d=<base64>` URL fragment (shared privately in the
 group chat) and stored in each phone's localStorage. This makes the file
 safe to host on a public site.
 
+## Pages
+
+- `index.html` — the step-by-step navigator (tickets, transfers, emergency card)
+- `spots.html` — photo spots + talking points along the route
+- `evening.html` — post-arrival evening plan around Homlungsvegen 34
+
 ## Hosting (free)
 
-The repo is public, so the site is served directly from the branch:
+The repo is public. **Use commit-pinned rawcdn URLs only** (raw.githack
+branch URLs are rate-limited and can intermittently fail — policy is to
+never share those):
 
 ```
-https://raw.githack.com/Georgechengtai/Oslo-Train/claude/norway-trip-nav-helper-uwgg8h/index.html
+https://rawcdn.githack.com/Georgechengtai/Oslo-Train/<commit-sha>/index.html
+https://rawcdn.githack.com/Georgechengtai/Oslo-Train/<commit-sha>/spots.html
+https://rawcdn.githack.com/Georgechengtai/Oslo-Train/<commit-sha>/evening.html
 ```
+
+Replace `<commit-sha>` with the latest commit hash (`git rev-parse HEAD`).
+Pinned URLs are immutable and CDN-cached, so they never throttle; pushing
+new content means sharing a new pinned URL.
 
 **Nicer permanent URL (GitHub Pages):** a deploy workflow is included
 (`.github/workflows/pages.yml`), but GitHub requires the Pages *site* to
@@ -38,8 +52,8 @@ be created once by a repo admin — a workflow token cannot do it
 **Settings → Pages → Source: GitHub Actions**. After that every push
 deploys automatically to `https://georgechengtai.github.io/Oslo-Train/`.
 
-Share the URL **with the `#d=` fragment appended** (see group chat)
-so booking references appear on each phone.
+Share the navigator URL **with the `#d=` fragment appended** (see group
+chat) so booking references appear on each phone.
 
 ## Before the trip (tonight, 2 minutes per person)
 
