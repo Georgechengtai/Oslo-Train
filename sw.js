@@ -1,4 +1,4 @@
-const CACHE = 'oslo-geiranger-jul2-v6';
+const CACHE = 'oslo-geiranger-jul2-v7';
 const ASSETS = ['./', './index.html', './spots.html', './evening.html', './qr.js',
   './img/map.jpg', './img/oslo-s.jpg', './img/dombas.jpg', './img/andalsnes.jpg',
   './img/geiranger-stop.jpg', './img/trollstigen.jpg', './img/gudbrandsjuvet.jpg',

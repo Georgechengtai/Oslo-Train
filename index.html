@@ -18,7 +18,7 @@
   *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
   html{font-size:17px}
   body{margin:0; font-family:-apple-system,"PingFang HK","PingFang TC","Microsoft JhengHei",Roboto,"Noto Sans TC",sans-serif;
-       background:var(--bg); color:var(--ink); line-height:1.6; padding-bottom:70px}
+       background:var(--bg); color:var(--ink); line-height:1.6; padding-bottom:120px}
   .wrap{max-width:560px; margin:0 auto; padding:0 12px}
 
   /* ── sticky now bar ── */
@@ -153,6 +153,55 @@
 
   footer{text-align:center; font-size:.75rem; color:var(--mut); padding:20px 10px 30px}
   .pill{display:inline-block; background:#eef1ef; border-radius:999px; padding:2px 10px; font-size:.75rem; color:var(--mut); margin:2px}
+
+  /* ── tabs ── */
+  .tab{display:none}
+  .tab.active{display:block}
+  #tabbar{position:fixed; bottom:0; left:0; right:0; z-index:60; display:flex;
+          background:var(--green); box-shadow:0 -2px 10px rgba(0,0,0,.3);
+          padding-bottom:env(safe-area-inset-bottom)}
+  #tabbar a{flex:1; text-align:center; color:#cfe8dc; text-decoration:none; font-weight:800;
+            font-size:.9rem; padding:12px 4px 10px; border-top:3px solid transparent}
+  #tabbar a.on{color:#ffd23f; border-top-color:#ffd23f; background:rgba(255,255,255,.06)}
+  .gmap{width:100%; height:300px; border:0; border-radius:12px; display:block; background:#e7ecea}
+
+  /* ── spots tab ── */
+  .strip{display:flex; gap:6px; overflow-x:auto; padding:12px 2px; -webkit-overflow-scrolling:touch}
+  .strip a{flex:none; background:var(--card); border:1.5px solid #d9e2dc; border-radius:999px;
+           padding:6px 12px; font-size:.8rem; font-weight:700; color:var(--green); text-decoration:none; white-space:nowrap}
+  .strip a b{color:var(--amber)}
+  .spot{background:var(--card); border-radius:18px; margin:16px 0; box-shadow:0 1px 5px rgba(0,0,0,.08);
+        overflow:hidden; border-left:6px solid var(--green2)}
+  .spot img{width:100%; height:auto; display:block}
+  .spot .inner{padding:12px 16px 16px}
+  .spot .when{display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:4px}
+  .schip{background:var(--green); color:#fff; border-radius:10px; padding:3px 10px;
+         font-weight:800; font-size:.9rem; font-variant-numeric:tabular-nums}
+  .where{font-size:.78rem; color:var(--mut); background:#eef1ef; border-radius:8px; padding:2px 10px}
+  .spot h2{margin:6px 0 4px; font-size:1.15rem; color:var(--green)}
+  .spot .desc{font-size:.93rem; margin:4px 0}
+  .bluff{background:var(--lblue); border-radius:12px; padding:10px 14px; margin:10px 0; font-size:.9rem}
+  .bluff h3{margin:0 0 4px; font-size:.85rem; color:var(--blue)}
+  .bluff ul{margin:0; padding-left:1.2em}
+  .bluff li{margin:4px 0}
+  .caption{font-size:.75rem; color:var(--mut); padding:4px 16px 0}
+
+  /* ── tonight tab ── */
+  .opt{background:var(--card); border-radius:18px; margin:16px 0; box-shadow:0 1px 5px rgba(0,0,0,.08);
+       overflow:hidden; border-left:6px solid var(--green2)}
+  .opt .inner{padding:12px 16px 16px}
+  .opt h2{margin:4px 0 2px; font-size:1.12rem; color:var(--green)}
+  .meta{display:flex; gap:6px; flex-wrap:wrap; margin:6px 0}
+  .meta span{background:#eef1ef; border-radius:999px; padding:2px 10px; font-size:.76rem; color:var(--mut); font-weight:700}
+  .go{background:var(--lgreen); border-radius:12px; padding:9px 12px; margin:8px 0; font-size:.9rem}
+  .go b{color:var(--green2)}
+  .stop{background:var(--lred); border:1.5px solid #eab0b0; border-radius:12px; padding:9px 12px; margin:8px 0; font-size:.9rem}
+  .stop b{color:var(--red)}
+  .walkcheck{background:var(--lblue); border-radius:12px; padding:9px 12px; margin:8px 0; font-size:.9rem}
+  .walkcheck h3{margin:0 0 4px; font-size:.85rem; color:var(--blue)}
+  .walkcheck ol{margin:0; padding-left:1.3em}
+  .walkcheck li{margin:5px 0}
+  .schematic{width:100%; height:auto; display:block; margin:8px 0}
 </style>
 </head>
 <body>
@@ -171,6 +220,7 @@
   </div>
 </div>
 
+<div class="tab active" id="tab-nav">
 <header class="hero">
   <div class="date">2026年7月2日（星期四）</div>
   <h1>Oslo → Geiranger 逐步領航</h1>
@@ -477,6 +527,340 @@
   </footer>
 </div>
 
+</div>
+
+<div class="tab" id="tab-spots">
+<header class="hero">
+  <div class="date">2026年7月2日（星期四）</div>
+  <h1>Oslo → Geiranger 沿途 8 個打卡位</h1>
+  <p>每個位：幾點 · 喺邊 · 影咩 · 吹咩水。開一次就離線照用。</p>
+  <p style="opacity:.75">領航睇 🧭 領航tab，呢頁負責型。</p>
+</header>
+
+<div class="wrap">
+
+  <div class="strip">
+    <a href="#p1"><b>07:35前</b> 銅老虎</a>
+    <a href="#p2"><b>~08:40</b> 大湖</a>
+    <a href="#p3"><b>11:58</b> Dombås</a>
+    <a href="#p4"><b>12:08起</b> Rauma線</a>
+    <a href="#p5"><b>14:00</b> 纜車頂</a>
+    <a href="#p6"><b>~18:00</b> Trollstigen</a>
+    <a href="#p7"><b>~18:50</b> Ex Machina</a>
+    <a href="#p8"><b>~19:45</b> 老鷹路</a>
+  </div>
+
+  <!-- 1 -->
+  <div class="spot" id="p1">
+    <img src="img/oslo-s.jpg" alt="Oslo S" loading="lazy">
+    <div class="caption">官方相：Oslo S 正門廣場 — 銅老虎就喺呢個廣場度</div>
+    <div class="inner">
+      <div class="when"><span class="schip">07:35 前</span><span class="where">行程位置：出發前 · Oslo S 正門廣場</span></div>
+      <h2>🐯 Oslo 銅老虎</h2>
+      <p class="desc">車站正門廣場（Jernbanetorget）有隻 4.5 米長嘅銅老虎，全 Oslo 最出名嘅打卡點之一，摸佢個頭影相係指定動作。</p>
+      <div class="bluff"><h3>💬 吹水位</h3><ul>
+        <li>Oslo 花名叫「老虎城 Tigerstaden」— 出自 19 世紀詩人 Bjørnson 首詩，形容呢個城市又危險又迷人。</li>
+        <li>隻虎係 2000 年 Oslo 建城 1000 週年時擺喺度。</li>
+      </ul></div>
+      <div class="notice">⚠️ <b>先搞掂正經事</b>：喺大屏幕見到「07:50 Trondheim」嘅月台號、行到月台之後，有突先好返嚟影。趕唔切就算 — 呢隻虎唔會走。</div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="spot" id="p2">
+    <div class="inner">
+      <div class="when"><span class="schip">~08:40–09:50</span><span class="where">行程位置：火車①上 · 左邊窗</span></div>
+      <h2>🌊 Mjøsa 大湖（車窗打卡）</h2>
+      <p class="desc">開車後大約一個鐘，火車沿住挪威最大湖 Mjøsa 嘅湖邊行成段路 — 坐<b>左邊</b>嘅望出窗，湖面平到似鏡。</p>
+      <div class="bluff"><h3>💬 吹水位</h3><ul>
+        <li>Mjøsa 面積 365 平方公里 — <b>大過四個香港島</b>。</li>
+        <li>湖上有隻 1856 年落水嘅明輪船 Skibladner，係<b>全世界最老、仲照常載客</b>嘅明輪蒸汽船，170 歲。</li>
+      </ul></div>
+      <div class="notice">📷 玻璃反光：手機鏡頭<b>貼實車窗</b>影，就冇倒影。</div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="spot" id="p3">
+    <img src="img/dombas.jpg" alt="Dombås" loading="lazy">
+    <div class="caption">官方相：Dombås 月台 — 你嘅紅色火車②就喺呢度</div>
+    <div class="inner">
+      <div class="when"><span class="schip">11:58–12:08</span><span class="where">行程位置：轉車站 · 得10分鐘‼️</span></div>
+      <h2>🏔 Dombås 高原快閃</h2>
+      <p class="desc">海拔約 660 米嘅高原小站，空氣凍過 Oslo 幾度。同紅色小火車＋雪山背景合照，係經典 Rauma 線開場照。</p>
+      <div class="bluff"><h3>💬 吹水位</h3><ul>
+        <li>呢度隔籬嘅 Dovrefjell 山區有<b>全歐洲唯一嘅野生麝香牛（musk ox）</b>群 — 1930 年代由格陵蘭運返嚟，冰河時期活到而家嘅物種。</li>
+        <li>挪威人講「Til Dovre faller!」（直到 Dovre 山倒下）＝「海枯石爛」，1814 年挪威立憲時嘅誓言。</li>
+      </ul></div>
+      <div class="notice">⚠️ <b>轉車大過天</b>：先上咗火車②霸好位，影相企喺車門邊或者隔窗影。唔好為張相搞到成團人甩車。</div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="spot" id="p4">
+    <img src="img/romsdalen.jpg" alt="Romsdalen" loading="lazy">
+    <div class="caption">官方相：Romsdalen 山谷 — 火車②window seat 就係呢種景</div>
+    <div class="inner">
+      <div class="when"><span class="schip">12:08→13:30</span><span class="where">行程位置：火車②全程 · 坐左邊</span></div>
+      <h2>🚂 Rauma 線：石橋＋大石壁</h2>
+      <p class="desc">成條線都係打卡位，兩個高潮位<b>車會自動慢駛＋廣播</b>：① Kylling 石橋 — 百年石拱橋，橋底 Rauma 河綠到唔真實；② Trollveggen「精靈之牆」— 成幅 1000 米直上直落嘅石壁喺左邊窗逼埋嚟。</p>
+      <div class="bluff"><h3>💬 吹水位</h3><ul>
+        <li>Rauma 線經常被選做<b>歐洲最靚火車線</b>之一 — 而我哋張飛係包埋喺套票入面。</li>
+        <li>Trollveggen 係<b>歐洲最高嘅垂直崖壁</b>，玩跳崖（BASE jump）死得人多，1986 年起立法禁跳。</li>
+        <li>官方小冊子話：Romsdalen 一帶做過 <b>Harry Potter 同 Mission: Impossible</b> 嘅取景地。</li>
+      </ul></div>
+      <div class="notice">📷 聽到廣播先攞手機都得，唔使成程舉住。慢駛位人人企左邊 — 早少少企定卡位。</div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="spot" id="p5">
+    <img src="img/andalsnes.jpg" alt="Åndalsnes" loading="lazy">
+    <div class="caption">官方相：Åndalsnes 站前廣場 — 對面就係纜車站</div>
+    <div class="inner">
+      <div class="when"><span class="schip">14:00–15:30</span><span class="where">行程位置：Åndalsnes · 車站對面上纜車</span></div>
+      <h2>🚡 Nesaksla 山頂（708米）</h2>
+      <p class="desc">全挪威最新式嘅纜車之一（2021 年開幕），10 分鐘由海邊拉上 708 米山頂，成個 Romsdalsfjord＋群山 360° 攤喺腳下。山頂 Eggen 餐廳嘅落地玻璃位係頭號打卡座。</p>
+      <div class="bluff"><h3>💬 吹水位</h3><ul>
+        <li>山頂行落少少有個 <b>Rampestreken 觀景台</b> — 條鋼橋伸出崖外，企上去張相似浮喺半空。</li>
+        <li>Åndalsnes 外號「挪威登山之都」— 我哋用 10 分鐘搭纜車完成人哋行 3 個鐘嘅路。</li>
+      </ul></div>
+      <div class="notice">⚠️ <b>15:30 鬧鐘＝落山，冇得拗。</b>Rampestreken 要行一段落斜路先到 — 想去就即上山即去，唔好留到尾。</div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="spot" id="p6">
+    <img src="img/trollstigen.jpg" alt="Trollstigen" loading="lazy">
+    <div class="caption">官方相：Trollstigen 觀景台望落 11 個髮夾彎</div>
+    <div class="inner">
+      <div class="when"><span class="schip">~18:00 · 停35分鐘</span><span class="where">行程位置：巴士第一個影相位</span></div>
+      <h2>🌀 Trollstigen 精靈之路</h2>
+      <p class="desc">全挪威最出名嘅山路：11 個髮夾彎掛喺山壁上。觀景台條路伸出去，最大嗰個平台<b>凌空喺馬路上面 200 米</b> — 就係張經典相嘅拍攝位。</p>
+      <div class="bluff"><h3>💬 吹水位</h3><ul>
+        <li>1936 年開通，國王 Haakon 七世親自剪綵；起咗成 8 年，好多路段係人手鑿出嚟。</li>
+        <li>Trollstigen＝「精靈嘅梯級」；冬天成條路封閉，得夏天先行到 — 所以今日呢程係季節限定。</li>
+        <li>驚高唔使上大平台 — 官方講明有幾個唔同高度嘅觀景點，任揀。</li>
+      </ul></div>
+      <div class="notice">⚠️ <b>返車三步曲</b>：落車影低巴士＋車牌 → 司機講集合時間即刻 set 鬧鐘（早5分鐘）→ 響咗就返。呢度有café、廁所、手信舖，35分鐘一眨眼就冇。天氣差改停老鷹彎＝正常安排。</div>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="spot" id="p7">
+    <img src="img/gudbrandsjuvet.jpg" alt="Gudbrandsjuvet" loading="lazy">
+    <div class="caption">官方相：Gudbrandsjuvet 峽谷觀景橋</div>
+    <div class="inner">
+      <div class="when"><span class="schip">~18:50 · 停10分鐘</span><span class="where">行程位置：巴士第二個影相位</span></div>
+      <h2>🎬 Gudbrandsjuvet（Ex Machina 拍攝地）</h2>
+      <p class="desc">Valldøla 河幾千年鑿出嚟嘅深谷，觀景橋好似花環咁繞住個峽谷起。企喺橋上望落去，水流喺石罅入面打晒圈。</p>
+      <div class="bluff"><h3>💬 吹水位</h3><ul>
+        <li>官方小冊子原話：睇過電影 <b>Ex Machina</b> 就會認得呢度 — <b>套戲大部分場景就喺呢一帶影</b>。AI 電影朝聖位，同 AI 整嘅旅遊頁嚟打卡，圓滿。</li>
+        <li>啲觀景平台係挪威「國家景觀路線」計劃搵則師專登設計 — 連個廁所都攞過建築獎級數。</li>
+      </ul></div>
+      <div class="notice">⚠️ 得 <b>10 分鐘</b>：落車直行去橋 → 影 → 返。一樣三步曲。</div>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="spot" id="p8">
+    <img src="img/geiranger-view.jpg" alt="Geiranger" loading="lazy">
+    <div class="caption">官方相：由上面望落 Geirangerfjord — 落山嗰段就係呢個角度</div>
+    <div class="inner">
+      <div class="when"><span class="schip">~19:45 → 20:15</span><span class="where">行程位置：巴士落山入 Geiranger＋黃昏碼頭</span></div>
+      <h2>🦅 老鷹之路落山 ＋ Geiranger 黃昏</h2>
+      <p class="desc">最後一段落山路叫 Ørnevegen「老鷹之路」— 11 個彎位一路兜落海邊，成個 Geirangerfjord 喺車頭玻璃度展開。落車之後，黃昏碼頭＋U 型峽灣就係今日壓軸打卡位。</p>
+      <div class="bluff"><h3>💬 吹水位</h3><ul>
+        <li>Geirangerfjord 係 <b>UNESCO 世界遺產</b>（2005年）— 挪威成千條峽灣，得兩條攞到呢個銜頭。</li>
+        <li>條村常住人口得二百幾人，但一年幾十萬遊客 — 而我哋今晚係喺度<b>過夜</b>嘅少數，郵輪客晚晚走晒，成條峽灣得返我哋。</li>
+        <li>而家係7月，<b>夜晚11點先天黑</b> — 唔使同夕陽鬥快。</li>
+      </ul></div>
+      <div class="notice">💡 巴士落山時坐定定隔窗影就得（彎多，企起身會跌）。到埗放低行李，夜晚 21–22 點光線最靚，行返出碼頭慢慢影。</div>
+    </div>
+  </div>
+
+  <!-- HIDDEN GEMS -->
+  <section class="block">
+    <h2>🤫 冷門位（識玩先知，人少景靚）</h2>
+    <div class="bluff" style="margin-top:0"><h3>🚂 火車②開出後 20–35 分鐘 · Lesjaskogsvatnet 湖</h3>
+      <ul>
+        <li>兩邊窗都見到嘅長湖，水平如鏡 — 但真正巴閉喺個湖係<b>全世界少有嘅「雙出口湖」</b>：同一個湖，東邊流出 Gudbrandsdalen，西邊流出 Rauma 河（即係你哋跟住成程嘅嗰條河，源頭就喺度）。</li>
+        <li>吹水句：「呢個湖決定唔到自己流去邊個海，索性兩邊都流。」</li>
+      </ul></div>
+    <div class="bluff"><h3>🚉 ~12:55 · Bjorli 站（唔使落車）</h3>
+      <ul><li>舊水塔＋火車轉盤仲喺月台邊 — 蒸汽火車年代遺物。<b>過咗 Bjorli，先至係 Rauma 線最誇張嘅落山段</b>：之後半個鐘先係正戲，唔好喺呢度前瞓着。</li></ul></div>
+    <div class="bluff"><h3>🚌 Trollstigen 落山段 · Stigfossen 瀑布橋位</h3>
+      <ul><li>人人喺上面觀景台影髮夾彎，<b>少人為意巴士會喺 Stigfossen（320米瀑布）腳下過石橋</b> — 過橋嗰幾秒，成條瀑布喺車窗邊瀉落嚟。聽到水聲就準備手機。</li></ul></div>
+    <div class="bluff"><h3>⛪ Geiranger 白色小教堂（黃昏加碼位）</h3>
+      <ul><li>村口山腰嘅八角形白色木教堂（1842年），行上去10分鐘左右 — 郵輪客黃昏走晒，長凳望住成條峽灣，係村內最靜嘅視角。</li></ul></div>
+    <div class="bluff"><h3>🏆 遊客口碑三甲（俾你哋做參照）</h3>
+      <ul><li>評論區公認最正三個景：<b>Flydalsjuvet 崖位</b>（今晚行得到，睇「今晚加碼頁」）、<b>Ørnesvingen 老鷹彎</b>（巴士今日經）、<b>Dalsnibba Skywalk</b>（1500米，要車上去）。</li></ul></div>
+  </section>
+
+</div>
+</div>
+
+<div class="tab" id="tab-tonight">
+<header class="hero">
+  <div class="date">2026年7月2日晚 · 日光去到約23:00</div>
+  <h1>返屋企嗰 2km 就係今晚嘅景點</h1>
+  <p>屋企已確認：<b>Homlungsvegen 34</b>（峽灣西南岸 Homlong）</p>
+  <p style="opacity:.8">今晚：黃金時段行返屋企 ＋ 屋企周邊三寶。<br>聽日（7月3日）行程照票面，喺下面有時間表。</p>
+</header>
+
+<div class="wrap">
+
+  <!-- real maps -->
+  <section class="block">
+    <h2>🗺 真地圖（要有網 · 可以放大移動）</h2>
+    <p style="font-size:.85rem; color:var(--mut); margin:0 0 6px">① 行路路線：巴士落車位 → 屋企 34 號</p>
+    <iframe class="gmap" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      src="https://maps.google.com/maps?saddr=Geiranger+Grill,+Geiranger&daddr=Homlungsvegen+34,+6216+Geiranger&dirflg=w&hl=zh-TW&output=embed"></iframe>
+    <p style="font-size:.85rem; color:var(--mut); margin:10px 0 6px">② 衛星圖：屋企一帶（Homlong 岸邊 · 揾獨木舟架／石灘）</p>
+    <iframe class="gmap" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      src="https://maps.google.com/maps?q=Homlungsvegen+34,+6216+Geiranger&t=k&z=16&hl=zh-TW&output=embed"></iframe>
+    <p class="svnote">地圖方格要有網先載入；冇網就用下面離線示意圖＋「水右手邊」原則。</p>
+  </section>
+
+
+  <!-- schematic -->
+  <section class="block">
+    <h2>📴 離線後備示意圖（上面真地圖開唔到先用呢張）</h2>
+    <svg class="schematic" viewBox="0 0 560 400" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+      <rect width="560" height="400" fill="#eef6f0" rx="14"/>
+      <!-- fjord water band across upper area -->
+      <path d="M0,20 L560,20 L560,150 Q420,175 300,185 Q160,196 40,240 L0,250 Z" fill="#bcdcec"/>
+      <text x="200" y="80" font-size="16" fill="#3a6f8c" font-weight="bold">Geirangerfjord（行嗰陣水一直喺右手邊）</text>
+      <!-- village bottom right -->
+      <rect x="400" y="270" width="146" height="76" rx="10" fill="#fff" stroke="#14724f" stroke-width="2.5"/>
+      <text x="412" y="294" font-size="14" font-weight="bold" fill="#0b3d2e">Geiranger 村</text>
+      <text x="412" y="312" font-size="11.5" fill="#5b6b63">① 巴士落車＝黃圈位</text>
+      <text x="412" y="328" font-size="11.5" fill="#5b6b63">（Geiranger Grill 旁）</text>
+      <!-- shore road -->
+      <path d="M400,300 Q300,280 220,255 Q140,230 70,195" stroke="#14724f" stroke-width="6" fill="none" stroke-dasharray="9 6"/>
+      <text x="205" y="295" font-size="12.5" fill="#0b3d2e" font-weight="bold">② 沿岸路 · 唯一原則：</text>
+      <text x="205" y="312" font-size="12.5" fill="#0b3d2e" font-weight="bold">有得揀就揀貼住水嗰條</text>
+      <text x="230" y="332" font-size="11.5" fill="#5b6b63">~2km · 25–30分鐘 · 平緩</text>
+      <!-- Homlong -->
+      <circle cx="60" cy="185" r="12" fill="#14724f"/>
+      <text x="20" y="150" font-size="15" font-weight="bold" fill="#0b3d2e">③ Homlong 屋企區</text>
+      <text x="20" y="168" font-size="12" fill="#5b6b63">🏠 34號 · 🛶 獨木舟中心 · 🪨 石灘</text>
+      <!-- kayak flag -->
+      <rect x="20" y="235" width="230" height="52" rx="10" fill="#fff3e0" stroke="#f0c98a" stroke-width="2"/>
+      <text x="32" y="257" font-size="12.5" fill="#7a4a06" font-weight="bold">⭐ 聽朝 09:15 獨木舟集合就喺呢區</text>
+      <text x="32" y="275" font-size="11.5" fill="#7a4a06">今晚順路認定門口＝聽朝零壓力</text>
+      <!-- church -->
+      <circle cx="520" cy="240" r="8" fill="#b45309"/>
+      <text x="440" y="238" font-size="12" font-weight="bold" fill="#b45309">⛪ 小教堂（出發前加碼）</text>
+      <!-- tomorrow zone -->
+      <rect x="400" y="356" width="146" height="34" rx="8" fill="none" stroke="#9aa8a0" stroke-width="2" stroke-dasharray="5 4"/>
+      <text x="410" y="378" font-size="11.5" fill="#5b6b63">↓ 村後山：瀑布/崖位＝聽日</text>
+      <text x="14" y="388" font-size="11" fill="#8a9a90">唔係比例 · 太陽今晚23:00先落山，慢慢行</text>
+    </svg>
+  </section>
+
+  <!-- Leg 1 -->
+  <div class="opt" id="a">
+    <div class="inner">
+      <h2>第①段｜落車點出發（黃圈位）</h2>
+      <div class="meta"><span>20:15 落車</span><span>行李跟身</span></div>
+      <figure class="shot">
+        <img src="img/geiranger-stop.jpg" alt="Geiranger 巴士站位置" loading="lazy">
+        <figcaption><b>官方相：你落車嘅黃圈位（Geiranger Grill 旁）。</b>相入面個碼頭同遊艇區，就係你哋接住沿岸行嘅起點方向。</figcaption>
+      </figure>
+      <div class="walkcheck"><h3>👣 出發程序</h3>
+        <ol>
+          <li>落車企定，撳下面綠掣，<b>等藍點定咗先開步</b>。
+            <span class="see">Google Maps 條線由你腳下沿住海邊向西北拉去 Homlungsvegen 34。</span></li>
+          <li>有力嘅話先加碼10分鐘：白色小教堂喺村口山腰（藍掣②），影完先出發。攰就跳過，聽日都得。</li>
+        </ol>
+      </div>
+      <div class="btns">
+        <a class="btn map" href="https://www.google.com/maps/dir/?api=1&origin=Geiranger+Grill,+Geiranger&destination=Homlungsvegen+34,+6216+Geiranger&travelmode=walking">🧭 ① 導航：落車位 → 屋企 34號</a>
+        <a class="btn map" style="background:#b45309" href="https://www.google.com/maps/dir/?api=1&origin=Geiranger+Grill,+Geiranger&destination=Geiranger+kyrkje&travelmode=walking">⛪ ② 加碼：先去小教堂（10分鐘）</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leg 2 -->
+  <div class="opt" id="b">
+    <div class="inner">
+      <h2>第②段｜沿岸 2km（今晚正菜）</h2>
+      <div class="meta"><span>25–30分鐘</span><span>平緩</span><span>21:00–22:00 光線最靚</span></div>
+      <p style="font-size:.92rem">呢段路本身就係打卡位：右手邊成條 UNESCO 峽灣，郵輪走晒之後水面平到反光，村燈喺背後越拉越遠。唔使趕 — 天光到23:00。</p>
+      <div class="walkcheck"><h3>👣 一路向前指標（babysit 版）</h3>
+        <ol>
+          <li>全程<b>一條大原則：水喺右手邊</b>。水去咗左手邊＝掉咗頭，原地180°轉身。</li>
+          <li>路口點揀：<b>邊條路貼住水就行邊條</b>。上斜離開海邊嗰啲支路一律唔理。</li>
+          <li>中段自檢：回頭望 —
+            <span class="see">村同碼頭喺你<b>後面</b>越嚟越細；前面海灣對面山壁越嚟越近。啱晒。</span></li>
+          <li>就到嘅指標：
+            <span class="see">路邊開始見到<b>Homlungsvegen 門牌號碼</b>＋營地木屋群；見到<b>獨木舟/皮艇</b>擺喺岸邊＝你已經入咗屋企區。</span></li>
+          <li>最後：搵<b>門牌 34</b>。Google Maps 話「已到達」之後先逐個門牌對，唔使心急。</li>
+        </ol>
+      </div>
+      <div class="go"><b>後備：</b>真係攰到行唔郁／落大雨 → 打畀住宿主人嚟接（電話喺訂房確認 email）。呢條唔係考驗，係散步。</div>
+      <div class="btns">
+        <a class="btn sv" href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=62.1008,7.2056">👁 起點碼頭街景（預覽）</a>
+        <a class="btn sv" href="https://www.google.com/maps/search/?api=1&query=Homlungsvegen+34,+6216+Geiranger">📍 終點喺地圖邊度</a>
+      </div>
+      <p class="svnote">街景黑畫面＝該點冇影過；沿岸小路街景可能唔全 — 靠藍點＋「水右手邊」就夠。</p>
+    </div>
+  </div>
+
+  <!-- Leg 3: around home -->
+  <div class="opt" id="c">
+    <div class="inner">
+      <h2>第③段｜屋企周邊三寶（放低行李之後）</h2>
+      <div class="meta"><span>全部5分鐘內</span><span>拖鞋級</span></div>
+      <div class="walkcheck"><h3>🛶 三寶一：Scout 聽朝獨木舟集合點（最有用嘅一件事）</h3>
+        <ol>
+          <li>聽朝 <b>09:30 獨木舟、09:15 要到</b> — 集合點 <span class="kw">Geiranger Kayak Center, Homlong</span> 就喺你哋屋企呢一區、海邊。</li>
+          <li>今晚趁光行過去認定：
+            <span class="see">岸邊一排<b>彩色獨木舟／皮艇架</b>＋小屋。影低張相＋記低由 34 號行過去要幾分鐘（估計3–5分鐘內）。</span></li>
+          <li>聽朝著好防水衫褲直接行過去 — 零導航壓力食早餐。</li>
+        </ol>
+      </div>
+      <div class="walkcheck"><h3>🪨 三寶二：門口石灘／小碼頭</h3>
+        <ol><li>屋企區落到水邊就係石灘位 — <b>望返成條峽灣＋村燈</b>嘅私家角度，遊客唔會嚟到呢邊。21:30–22:30 斜陽金光，今日壓軸大合照喺呢度影。</li></ol>
+      </div>
+      <div class="walkcheck"><h3>🌌 三寶三：23:00 嘅「唔黑夜晚」</h3>
+        <ol><li>臨瞓前出門口企兩分鐘 — 7月頭嘅挪威夜晚係<b>永遠唔完全黑</b>嘅深藍色，峽灣得返水聲。同屋企人視像打卡嘅最佳時刻（香港嗰邊啱啱朝早5點……都係算啦，聽朝先）。</li></ol>
+      </div>
+      <div class="btns">
+        <a class="btn map" href="https://www.google.com/maps/dir/?api=1&origin=Homlungsvegen+34,+6216+Geiranger&destination=Geiranger+Kayak+Center,+Homlong,+Geiranger&travelmode=walking">🧭 導航：屋企 → 獨木舟集合點（scout用）</a>
+      </div>
+      <p class="svnote">如果 Google 搵唔到 kayak center 個 pin：沿岸搵獨木舟架就係 — 佢哋成排艇擺喺出面，好難錯過。</p>
+    </div>
+  </div>
+
+
+  <!-- July 3 facts -->
+  <div class="opt" id="j3">
+    <div class="inner">
+      <h2>📅 聽日（7月3日）時間表 — 照足票面</h2>
+      <div class="meta"><span>唔係建議，係你哋已訂嘅行程</span></div>
+      <div class="walkcheck"><h3>已訂死（兩張飛）</h3>
+        <ol>
+          <li><b>09:15 集合</b>（09:30–12:00）獨木舟 · 集合點 <span class="kw">Geiranger Kayak Center, Homlong</span> — 就喺屋企隔籬，今晚三寶①已經scout咗。帶防水衫褲、乾衫、零食。</li>
+          <li><b>14:00–15:30</b> 滑索 · 集合點 <span class="kw">Geirangervegen 139</span>（記得由村行過去要預時間）。</li>
+        </ol>
+      </div>
+      <div class="go"><b>空窗一（12:00–14:00）：</b>獨木舟完 → 返村食晏。夠時間加插<b>瀑布梯級 Fossevandring</b>（來回45分鐘）— 你哋話「行＋巴士」嗰個瀑布位就係喺呢個窗口行。</div>
+      <div class="go"><b>空窗二（15:30之後全晚）：</b>滑索完全空 — <b>Flydalsjuvet 崖位</b>（行上去單程~70分鐘）或者<b>搭車上 Dalsnibba／63號公路 Waterfall view</b>（你哋長方框）擺呢度先啱。</div>
+      <div class="stop"><b>後日（7月4日）卡位提醒：</b>10:00–11:00 RIB快艇 → <b>15:00 船離開 Geiranger</b> 去 Ålesund。即係凡係 Geiranger 想做嘅嘢，7月3日就係最後全日。63號公路高段照舊：行路🚫，要車。</div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<nav id="tabbar">
+  <a href="#nav" data-t="nav" class="on">🧭 領航</a>
+  <a href="#spots" data-t="spots">📸 打卡</a>
+  <a href="#tonight" data-t="tonight">🌗 今晚</a>
+</nav>
+
 <script src="qr.js"></script>
 <script>
 (function(){
@@ -594,6 +978,23 @@
   if('serviceWorker' in navigator){
     try{ navigator.serviceWorker.register('./sw.js').catch(function(){}); }catch(e){}
   }
+})();
+</script>
+
+<script>
+(function(){
+  var valid = {nav:1, spots:1, tonight:1};
+  function show(name){
+    document.querySelectorAll('.tab').forEach(function(t){ t.classList.toggle('active', t.id === 'tab-'+name); });
+    document.querySelectorAll('#tabbar a').forEach(function(a){ a.classList.toggle('on', a.dataset.t === name); });
+    window.scrollTo(0,0);
+  }
+  function fromHash(){
+    var h = location.hash.replace('#','');
+    if(valid[h]) show(h);
+  }
+  window.addEventListener('hashchange', fromHash);
+  fromHash();
 })();
 </script>
 </body>
