@@ -164,6 +164,11 @@
             font-size:.9rem; padding:12px 4px 10px; border-top:3px solid transparent}
   #tabbar a.on{color:#ffd23f; border-top-color:#ffd23f; background:rgba(255,255,255,.06)}
   .gmap{width:100%; height:300px; border:0; border-radius:12px; display:block; background:#e7ecea}
+  #toptabs{display:flex; gap:8px; max-width:560px; margin:0 auto; padding:10px 12px 0}
+  #toptabs a{flex:1; text-align:center; text-decoration:none; font-weight:800; font-size:.95rem;
+             padding:10px 4px; border-radius:12px; background:#fff; color:var(--green);
+             border:2px solid #cfdcd4; box-shadow:0 1px 3px rgba(0,0,0,.06)}
+  #toptabs a.on{background:var(--green2); color:#ffd23f; border-color:var(--green2)}
 
   /* ── spots tab ── */
   .strip{display:flex; gap:6px; overflow-x:auto; padding:12px 2px; -webkit-overflow-scrolling:touch}
@@ -226,6 +231,12 @@
     </div>
     <div class="cd" id="countdown"><small>&nbsp;</small>&nbsp;</div>
   </div>
+</div>
+
+<div id="toptabs">
+  <a href="#nav" data-t="nav" class="on">🧭 領航</a>
+  <a href="#spots" data-t="spots">📸 打卡</a>
+  <a href="#tonight" data-t="tonight">🌗 今晚</a>
 </div>
 
 <div class="tab active" id="tab-nav">
@@ -1022,7 +1033,7 @@
   var valid = {nav:1, spots:1, tonight:1};
   function show(name){
     document.querySelectorAll('.tab').forEach(function(t){ t.classList.toggle('active', t.id === 'tab-'+name); });
-    document.querySelectorAll('#tabbar a').forEach(function(a){ a.classList.toggle('on', a.dataset.t === name); });
+    document.querySelectorAll('#tabbar a, #toptabs a').forEach(function(a){ a.classList.toggle('on', a.dataset.t === name); });
     window.scrollTo(0,0);
   }
   function fromHash(){
