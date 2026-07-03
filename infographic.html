@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0b3d2e">
 <meta name="robots" content="noindex">
-<title>7月4日之後 · 剩餘全程一張長圖</title>
+<title>行程詳表 7月4–12日</title>
 <style>
-  :root{--green:#0b3d2e; --green2:#14724f; --lgreen:#e6f4ec; --amber:#b45309; --lamber:#fff3e0;
+  :root{--green:#0b3d2e; --green2:#14724f; --lgreen:#e6f4ec; --amber:#b45309;
     --red:#b91c1c; --lred:#fdecec; --blue:#1d4ed8; --lblue:#e8eefc;
     --ink:#1a1a1a; --mut:#5b6b63; --bg:#f4f6f5; --card:#ffffff}
   *{box-sizing:border-box}
@@ -15,229 +15,114 @@
   body{margin:0; font-family:-apple-system,"PingFang HK","PingFang TC","Microsoft JhengHei",Roboto,"Noto Sans TC",sans-serif;
        background:var(--bg); color:var(--ink); line-height:1.6; padding-bottom:40px}
   .wrap{max-width:560px; margin:0 auto; padding:0 12px}
-  header.hero{background:linear-gradient(160deg,var(--green) 0%,var(--green2) 90%); color:#fff; padding:22px 16px; text-align:center}
-  header.hero h1{margin:0 0 6px; font-size:1.35rem}
-  header.hero .date{display:inline-block; background:#ffd23f; color:#3a2c00; font-weight:800; padding:3px 14px; border-radius:999px; font-size:.92rem; margin-bottom:8px}
-  header.hero p{margin:4px 0 0; font-size:.85rem; opacity:.92}
-  section.block{background:var(--card); border-radius:18px; margin:16px 0; padding:14px 16px; box-shadow:0 1px 5px rgba(0,0,0,.08)}
-  section.block h2{margin:0 0 8px; font-size:1.1rem; color:var(--green)}
-  .bigmap{width:100%; height:auto; display:block; border-radius:12px}
-  .day{background:var(--card); border-radius:18px; margin:16px 0; box-shadow:0 1px 5px rgba(0,0,0,.08); overflow:hidden; border-left:6px solid var(--green2)}
-  .day.hike{border-left-color:var(--amber)}
-  .day .dh{background:var(--green); color:#fff; padding:10px 16px; display:flex; justify-content:space-between; align-items:baseline}
-  .day .dh h2{margin:0; font-size:1.08rem}
-  .day .dh .wd{font-size:.8rem; color:#ffd23f; font-weight:800}
-  .day .body{padding:10px 16px 14px}
+  header.hero{background:var(--green); color:#fff; padding:18px 16px; text-align:center}
+  header.hero h1{margin:0; font-size:1.25rem}
+  header.hero p{margin:4px 0 0; font-size:.82rem; opacity:.85}
+  .day{background:var(--card); border-radius:16px; margin:14px 0; box-shadow:0 1px 4px rgba(0,0,0,.08); overflow:hidden}
+  .day .dh{background:var(--green); color:#fff; padding:9px 14px; display:flex; justify-content:space-between; align-items:baseline}
+  .day .dh h2{margin:0; font-size:1.02rem}
+  .day .dh .wd{font-size:.78rem; color:#ffd23f; font-weight:800}
+  .day .body{padding:6px 12px 12px}
   table.tt{width:100%; border-collapse:collapse; font-size:.9rem}
-  table.tt td{padding:6px 6px; border-bottom:1px solid #edf1ee; vertical-align:top}
+  table.tt td{padding:7px 4px; border-bottom:1px solid #edf1ee; vertical-align:top}
   table.tt tr:last-child td{border-bottom:none}
-  table.tt .kw{white-space:normal}
-  table.tt .t{white-space:nowrap; font-weight:800; color:var(--green); font-variant-numeric:tabular-nums; width:86px}
+  table.tt .t{white-space:nowrap; font-weight:800; color:var(--green); font-variant-numeric:tabular-nums; width:92px}
+  .loc{font-size:.84rem; margin-top:2px}
+  .loc a{color:var(--blue); font-weight:700; text-decoration:underline}
   .b{display:inline-block; border-radius:999px; padding:1px 9px; font-size:.72rem; font-weight:800}
   .b.ok{background:var(--lgreen); color:var(--green2)}
   .b.na{background:var(--lred); color:var(--red)}
   .b.money{background:#f2f5f3; color:var(--mut)}
-  .fc{background:var(--lblue); border-radius:12px; padding:9px 12px; margin:10px 0 0; font-size:.88rem}
-  .fc h3{margin:0 0 4px; font-size:.84rem; color:var(--blue)}
+  .fc{background:var(--lblue); border-radius:10px; padding:8px 12px; margin:10px 0 0; font-size:.86rem}
+  .fc h3{margin:0 0 4px; font-size:.8rem; color:var(--blue)}
   .fc ul{margin:0; padding-left:1.25em}
-  .fc li{margin:4px 0}
+  .fc li{margin:3px 0}
   .fc .warn{color:var(--amber); font-weight:700}
   .fc .bad{color:var(--red); font-weight:800}
-  .acc{background:#f7f5ef; border:1.5px solid #e5ddc8; border-radius:12px; padding:9px 12px; margin:10px 0 0; font-size:.87rem}
-  .acc b{color:#6b5300}
-  .kw{background:#0b3d2e; color:#ffd23f; padding:1px 8px; border-radius:6px; font-weight:800; font-family:ui-monospace,Menlo,monospace; font-size:.88em; white-space:nowrap}
-  footer{text-align:center; font-size:.75rem; color:var(--mut); padding:16px 10px 28px}
+  section.block{background:var(--card); border-radius:16px; margin:14px 0; padding:12px 14px; box-shadow:0 1px 4px rgba(0,0,0,.08)}
+  section.block h2{margin:0 0 8px; font-size:1.02rem; color:var(--green)}
+  .dl{display:block; text-align:center; background:var(--green2); color:#fff; text-decoration:none; font-weight:800; padding:11px; border-radius:12px; margin:8px 0}
+  footer{text-align:center; font-size:.74rem; color:var(--mut); padding:14px 10px 24px}
+  #qrsvg svg{width:min(55vw,200px); height:auto}
 </style>
 </head>
 <body>
 <header class="hero">
-  <div class="date">2026年7月4日 → 7月12日</div>
-  <h1>剩餘全程 · 一張長圖</h1>
-  <p>Geiranger → Ålesund → Bergen → Odda（Trolltunga）→ 羅弗敦 → Oslo → 香港</p>
-  <p style="opacity:.75">資料來源：你哋 Excel＋官方車票 PDF · 已逐項 fact-check（✅核實／⚠️注意／🚨發現問題）</p>
+  <h1>行程詳表 · 7月4–12日</h1>
+  <p>每項：時間＋確切地點（撳地點開 Google Maps；長按連結可複製）</p>
 </header>
 <div class="wrap">
-
   <section class="block">
-    <h2>🗺 剩餘路線全圖（圈內數字＝7月幾號）</h2>
-<img src="img/route-map.png" alt="剩餘路線全圖" style="width:100%; height:auto; display:block; border-radius:12px">
-    <a href="img/trip-poster.png" download style="display:block; text-align:center; background:#14724f; color:#fff; text-decoration:none; font-weight:800; padding:12px; border-radius:12px; margin-top:10px">🖼 下載成張海報PNG（存入相簿隨時睇）</a>
-  </section>
-
-  <!-- JUL 4 -->
-  <div class="day"><div class="dh"><h2>7月4日 · Geiranger → Ålesund</h2><span class="wd">星期六</span></div>
-    <div class="body">
-      <table class="tt">
-        <tr><td class="t">09:00</td><td>離屋＋行李寄存碼頭售票處（收費/件） <span class="b money">Airbnb 退房限10:00</span></td></tr>
-        <tr><td class="t">09:50</td><td>RIB快艇集合 <span class="kw">Geiranger Brygge, Maråkvegen 35</span>（碼頭邊老船屋） <span class="b ok">已訂</span> <span class="b money">895 NOK</span></td></tr>
-        <tr><td class="t">11:50</td><td>Panorama巴士團集合：<span class="kw">遊客中心門前大馬路</span>（12:00–14:00 上 Flydalsjuvet＋Dalsnibba Skywalk） <span class="b ok">已訂</span> <span class="b money">710 NOK</span></td></tr>
-        <tr><td class="t">14:45</td><td>攞返行李 → 遊船集合 <span class="kw">Geiranger Fjordservice</span>（要早15分鐘） <span class="b ok">已訂</span></td></tr>
-        <tr><td class="t">15:00→18:00</td><td>峽灣遊船 Geiranger → Ålesund（七姊妹瀑布近觀）</td></tr>
-        <tr><td class="t">18:00</td><td>落船 <span class="kw">Skutvika, Nedre Strandgate 53</span> → 行去 Airbnb</td></tr>
-      </table>
-      <div class="fc"><h3>🔍 Fact-check</h3><ul>
-        <li>✅ 三個集合點/提早時間全部對過官方票據：RIB早10分鐘（Geiranger Brygge）、巴士團早10分鐘（遊客中心前）、遊船早15分鐘。</li>
-        <li>✅ 你哋之前想去嘅「紅圈/長方框」（Flydalsjuvet、Dalsnibba）— <b>巴士團已包晒</b>，唔使自己諗交通。</li>
-        <li><span class="warn">⚠️ 時間鏈全日最緊係 14:00 巴士返到 → 14:45 遊船集合：45分鐘要攞行李＋快餐，唔好坐低食。</span></li>
-        <li><span class="warn">⚠️ Ålesund Airbnb 冇 check-in 指示 — 今日就 message 房東問攞匙方法。</span></li>
-        <li>✅ 遊船票 order #5NRYEK 有效；船有咖啡室＋露天甲板，9種語言語音導覽。</li>
-      </ul></div>
-      <div class="acc">🏠 <b>Ålesund：Øwregata 11</b> · €243.41 · 入住15:00起（你哋18:00到 ✅）· 有洗衣機 ✅</div>
-    </div>
-  </div>
-
-  <!-- JUL 5 -->
-  <div class="day"><div class="dh"><h2>7月5日 · Ålesund → Bergen（四程接駁）</h2><span class="wd">星期日</span></div>
-    <div class="body">
-      <table class="tt">
-        <tr><td class="t">10:50</td><td>Vy 430 巴士 · 上車位 <span class="kw">Skateflukaia</span>（遊客中心旁，即你哋落船嗰個碼頭區） <span class="b ok">已訂</span></td></tr>
-        <tr><td class="t">14:15</td><td>到 Nordfjordeid 巴士站</td></tr>
-        <tr><td class="t">14:25</td><td>轉 Skyss <span class="kw">150號</span> 巴士，車頭寫 <span class="kw">Måløy</span> 🚨得10分鐘 <span class="b ok">已訂</span></td></tr>
-        <tr><td class="t">15:25</td><td>到 Måløy（行2分鐘去碼頭）</td></tr>
-        <tr><td class="t">15:40</td><td>Norled 快船 → Bergen <span class="b ok">已訂</span></td></tr>
-        <tr><td class="t">20:15</td><td>到 Bergen <span class="kw">Strandkaiterminalen</span> 碼頭 → Airbnb</td></tr>
-      </table>
-      <div class="fc"><h3>🔍 Fact-check</h3><ul>
-        <li>✅ 六個時間全部同官方車票逐個對過，一字不差。</li>
-        <li><span class="bad">🚨 Nordfjordeid 轉車10分鐘 — 車票原文都寫「OBS!」。</span>落車企定搵「150 Måløy」；官方講明<b>船會等巴士</b>，Måløy 嗰程唔使驚。</li>
-        <li><span class="warn">⚠️ 星期日：挪威大部分舖頭關門、超市唔賣酒 — 今日（星期六）買定聽日車程嘅糧水。</span></li>
-        <li>✅ Nordfjordeid 巴士站有候車室＋廁所；想買嘢食 Minibakeriet 行5分鐘（車票原文推薦，但你哋得10分鐘 — 唔好去，帶定嘢食）。</li>
-      </ul></div>
-      <div class="acc">🏠 <b>Bergen：Nedre Fjellsmauet 18</b> · €518.36 · 有洗衣機 ✅</div>
-    </div>
-  </div>
-
-  <!-- JUL 6 -->
-  <div class="day"><div class="dh"><h2>7月6日 · Bergen → Odda</h2><span class="wd">星期一</span></div>
-    <div class="body">
-      <table class="tt">
-        <tr><td class="t">11:44</td><td>巴士 <span class="kw">930</span> Bergen → Odda <span class="b na">未買飛</span></td></tr>
-        <tr><td class="t">14:52</td><td>到 Odda → check-in ＋ 為聽日行山補給（超市買晏、水、朱古力）</td></tr>
-        <tr><td class="t">21:00</td><td>行山簡介會 @ <span class="kw">Trolltunga Hotel</span>, Odda <span class="b ok">跟團included</span></td></tr>
-      </table>
-      <div class="fc"><h3>🔍 Fact-check</h3><ul>
-        <li><span class="warn">⚠️ 930巴士未買 — Skyss 營運，用 Skyss app 或上車畀（卡）。留意星期一早上 Bergen 車站買埋回程（7月8日 05:30 嗰班）。</span></li>
-        <li><span class="bad">🚨 Excel 發現錯誤：Odda 嗰行嘅 Airbnb 連結貼咗 Bergen 間房嘅 link（兩行同一個 room id 872477685629147625）。地址 Sjukehusvegen 20 應該冇錯，但務必開 Airbnb App 對返「訂單」入面 Odda 嗰間先算數。</span></li>
-        <li>✅ 簡介會21:00 @ Trolltunga Hotel — 同 Fjord Tours 導賞團標準流程一致；住所行去旅遊中心10分鐘車/21分鐘路（Excel 註）。</li>
-      </ul></div>
-      <div class="acc">🏠 <b>Odda：Sjukehusvegen 20</b> · €573.40（兩晚）· 有洗衣機 ✅（Excel 標咗 Laundry Day）</div>
-    </div>
-  </div>
-
-  <!-- JUL 7 -->
-  <div class="day hike"><div class="dh" style="background:var(--amber)"><h2>7月7日 · Trolltunga 惡魔之舌行山</h2><span class="wd">星期二</span></div>
-    <div class="body">
-      <table class="tt">
-        <tr><td class="t">07:30</td><td>導賞團出發（Fjord Tours guided hike） <span class="b ok">已訂</span></td></tr>
-        <tr><td class="t">全日</td><td>約20km／10–12小時／爬升約800米 — 全程體力戰</td></tr>
-      </table>
-      <div class="fc"><h3>🔍 Fact-check＋裝備</h3><ul>
-        <li>✅ 有導遊帶 — 路線/安全佢負責，你哋負責對腳。</li>
-        <li><span class="warn">⚠️ 每人：行山鞋（唔可以波鞋）、2公升水、行山晏＋高熱量零食、防水褸褲、保暖層（山上凍好多）、電話尿袋。</span></li>
-        <li><span class="warn">⚠️ 前一晚簡介會問清楚：包唔包接送去山腳（Skjeggedal）、集合位。</span>天氣提前睇 yr.no「Trolltunga」。</li>
-        <li>✅ 舌尖影相要排隊 — 導遊會安排；相機交隊友影全景。</li>
-      </ul></div>
-    </div>
-  </div>
-
-  <!-- JUL 8 -->
-  <div class="day"><div class="dh"><h2>7月8日 · Odda → Bergen → 飛羅弗敦</h2><span class="wd">星期三</span></div>
-    <div class="body">
-      <table class="tt">
-        <tr><td class="t">05:30</td><td>巴士 <span class="kw">930</span> Odda → Bergen <span class="b na">未買飛</span></td></tr>
-        <tr><td class="t">08:25</td><td>到 Bergen — 行李寄存車站儲物櫃 → 空窗~7小時：Bryggen 木屋群＋Fløibanen 纜車</td></tr>
-        <tr><td class="t">17:20</td><td>Widerøe <span class="kw">WF616 → WF836</span>（轉機） <span class="b ok">已訂</span></td></tr>
-        <tr><td class="t">20:50</td><td>到 Svolvær 機場 → check-in（經 Lofoten Suitehotel 攞匙）</td></tr>
-      </table>
-      <div class="fc"><h3>🔍 Fact-check</h3><ul>
-        <li><span class="warn">⚠️ 05:30 開車＝約04:45起身 — 7號行完山當晚一定要執定行李先瞓。</span></li>
-        <li><span class="warn">⚠️ 去 Bergen 機場預足1小時（輕鐵 Bybanen 由市中心直到機場）。16:20前到機場。</span></li>
-        <li>✅ Svolvær 住宿 check-in 方式 Excel 已註明：經 <b>Lofoten Suitehotel</b> 櫃台。</li>
-        <li><span class="warn">⚠️ 行完 Trolltunga 隔日=腳軟日，Bergen 空窗唔好排太密，Fløibanen 係坐纜車唔使行。</span></li>
-      </ul></div>
-      <div class="acc">🏠 <b>Svolvær：Austnesfjordgata 40</b> · €1011（三晚）· 有洗衣機 ✅</div>
-    </div>
-  </div>
-
-  <!-- JUL 9 -->
-  <div class="day"><div class="dh"><h2>7月9日 · 羅弗敦本地團</h2><span class="wd">星期四</span></div>
-    <div class="body">
-      <table class="tt">
-        <tr><td class="t">08:15→17:30</td><td>Lofoten sightseeing tour（go2lofoten） <span class="b ok">已訂</span></td></tr>
-        <tr><td class="t">晚</td><td>洗衫日（Excel 標咗）＋ 補給</td></tr>
-      </table>
-      <div class="fc"><h3>🔍 Fact-check</h3><ul>
-        <li>✅ 全日跟團 — 零導航壓力日。確認吓接送點係咪住所/市中心（睇訂單 email）。</li>
-        <li><span class="warn">⚠️ 羅弗敦喺北極圈內：7月太陽唔落山（真·午夜太陽）— 眼罩必需。</span></li>
-      </ul></div>
-    </div>
-  </div>
-
-  <!-- JUL 10 -->
-  <div class="day"><div class="dh"><h2>7月10日 · Reine ＋ Reinebringen 行山</h2><span class="wd">星期五</span></div>
-    <div class="body">
-      <table class="tt">
-        <tr><td class="t">09:12</td><td>巴士 <span class="kw">742/741</span> Svolvær → Reine <span class="b na">未買飛</span></td></tr>
-        <tr><td class="t">日間</td><td>Reinebringen 行山（Sherpa石級 · 448米）＋ Reine 漁村</td></tr>
-        <tr><td class="t">20:23→23:14</td><td>巴士 742/741 返 Svolvær <span class="b na">未買飛</span></td></tr>
-      </table>
-      <div class="fc"><h3>🔍 Fact-check</h3><ul>
-        <li><span class="warn">⚠️ 車飛未買＋班次疏 — 去到羅弗敦即刻用 Reis Nordland app 睇實時班次買飛；搭失20:23嗰班就冇車。</span></li>
-        <li><span class="warn">⚠️ Reinebringen＝千五級石級直上，落雨石滑就唔好上；山頂就係羅弗敦明信片全景。</span></li>
-        <li>✅ 23:14返到都唔使怕黑 — 午夜太陽。</li>
-      </ul></div>
-    </div>
-  </div>
-
-  <!-- JUL 11-12 -->
-  <div class="day"><div class="dh"><h2>7月11–12日 · 回程</h2><span class="wd">星期六→日</span></div>
-    <div class="body">
-      <table class="tt">
-        <tr><td class="t">15:10</td><td>Svolvær ✈ Widerøe <span class="kw">WF829</span> ＋ SAS <span class="kw">SK4117</span>（轉機） <span class="b ok">已訂</span> · 去機場用 <span class="kw">Taxifix</span> app 叫車（Excel 註）</td></tr>
-        <tr><td class="t">19:05</td><td>到 Oslo（轉國際線，1小時45分鐘）</td></tr>
-        <tr><td class="t">20:50</td><td>Oslo ✈ 赫爾辛基（23:15到）</td></tr>
-        <tr><td class="t">00:35</td><td>赫爾辛基 ✈ 香港</td></tr>
-        <tr><td class="t">17:40</td><td>🏁 到香港</td></tr>
-      </table>
-      <div class="fc"><h3>🔍 Fact-check</h3><ul>
-        <li><span class="warn">⚠️ Oslo 轉機1小時45分：國內轉國際要重新過安檢 — 落機直行，唔好行街。</span></li>
-        <li><span class="warn">⚠️ 挪威買嘅嘢逾 315 NOK 可辦退稅（非EU）— 單據留起，Oslo 機場搞。</span></li>
-        <li>✅ 三段機票 Excel 標晒「Booked」。</li>
-      </ul></div>
-    </div>
-  </div>
-
-  <section class="block">
-    <h2>📌 全程三件最緊要（fact-check 總結）</h2>
+    <h2>未解決事項（3）</h2>
     <div class="fc" style="margin-top:0"><ul>
-      <li><span class="bad">🚨 ①Odda Airbnb 條 link 係錯嘅（貼咗 Bergen 間房）</span>— 開 App 用「訂單」核對。</li>
-      <li><span class="bad">🚨 ②三程巴士未買飛：</span>7月6＋8（Skyss 930）、7月10（Reis Nordland 742/741）。</li>
-      <li><span class="warn">⚠️ ③兩個魔鬼時位：7月5 Nordfjordeid 轉車10分鐘、7月8 朝早05:30開車。</span></li>
+      <li><span class="bad">🚨 Odda 住宿連結錯（Excel貼咗Bergen間房）— App「訂單」核對，地址以 Sjukehusvegen 20 為準。</span></li>
+      <li><span class="bad">🚨 車飛未買：7月6＋8（Skyss 930）、7月10（742/741，Reis Nordland app）。</span></li>
+      <li><span class="warn">⚠️ 兩個緊時位：7月5 Nordfjordeid 轉車10分鐘；7月8 05:30 開車。</span></li>
     </ul></div>
   </section>
 
+  <div class="day"><div class="dh"><h2>7月4日 · Geiranger → Ålesund</h2><span class="wd">星期六</span></div>
+    <div class="body">
+      <table class="tt"><tr><td class="t">09:00</td><td>離屋、執房、帶走垃圾 <div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Homlungsvegen%2034%2C%206216%20Geiranger">Homlungsvegen 34, 6216 Geiranger</a></div></td></tr><tr><td class="t">09:15–09:45</td><td>沿岸行返村，行李寄存（按件收費） <div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Geiranger%20ferjekai">碼頭售票處 Ticket Office（Geiranger 碼頭）</a></div></td></tr><tr><td class="t">09:50</td><td>RIB快艇集合（10:00–11:00；早10分鐘） <span class="b ok">已訂</span> <span class="b money">895 NOK</span><div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Mar%C3%A5kvegen%2035%2C%206216%20Geiranger">Geiranger Brygge, Maråkvegen 35, 6216 Geiranger</a></div></td></tr><tr><td class="t">11:50</td><td>Panorama巴士團集合（12:00–14:00：Flydalsjuvet＋Dalsnibba；早10分鐘） <span class="b ok">已訂</span> <span class="b money">710 NOK</span><div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Geiranger%20Tourist%20Information">遊客中心門前大馬路（碼頭旁、郵輪碼頭隔籬）</a></div></td></tr><tr><td class="t">14:45</td><td>攞返行李 → 遊船集合（早15分鐘） <span class="b ok">已訂</span><div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Geiranger%20Fjordservice">Geiranger Fjordservice（碼頭）</a></div></td></tr><tr><td class="t">15:00→18:00</td><td>遊船 Geiranger → Ålesund <span class="b ok">已訂</span><div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Nedre%20Strandgate%2053%2C%20%C3%85lesund">落船：Skutvika, Nedre Strandgate 53, Ålesund</a></div></td></tr><tr><td class="t">18:00後</td><td>入住（未有取匙指示 — 預先message房東）  <span class="b money">€243.41</span><div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=%C3%98wregata%2011%2C%20%C3%85lesund">Øwregata 11, Ålesund</a></div></td></tr></table>
+      <div class="fc"><h3>核對紀錄</h3><ul><li><span class="warn">⚠️ 14:00 巴士團返到 → 14:45 遊船集合：45分鐘內要攞行李＋食嘢。</span></li><li><span class="warn">⚠️ Ålesund Airbnb 冇 check-in 指示 — 今日內問房東。</span></li></ul></div>
+    </div>
+  </div>
+  <div class="day"><div class="dh"><h2>7月5日 · Ålesund → Bergen（四程）</h2><span class="wd">星期日</span></div>
+    <div class="body">
+      <table class="tt"><tr><td class="t">10:50</td><td>巴士 Vy 430 開車 <span class="b ok">已訂</span><div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Skateflukaia%2C%20%C3%85lesund">上車：Skateflukaia（遊客中心旁）, Ålesund</a></div></td></tr><tr><td class="t">14:15</td><td>到 Nordfjordeid <div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Nordfjordeid%20bus%20station">Nordfjordeid 巴士站, 6770 Nordfjordeid</a></div></td></tr><tr><td class="t">14:25</td><td>轉車：Skyss 150（車頭寫 Måløy）— 同站轉，得10分鐘 <span class="b ok">已訂</span><div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Nordfjordeid%20bus%20station">Nordfjordeid 巴士站（原地）</a></div></td></tr><tr><td class="t">15:25</td><td>到 Måløy，行2分鐘去碼頭 <div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=M%C3%A5l%C3%B8y%20boat%20dock">Måløy boat dock（Torghopen站旁）, 6700 Måløy</a></div></td></tr><tr><td class="t">15:40</td><td>Norled 快船開船 <span class="b ok">已訂</span><div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=M%C3%A5l%C3%B8y%20boat%20dock">Måløy 碼頭</a></div></td></tr><tr><td class="t">20:15</td><td>到 Bergen <div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Strandkaien%2015%2C%20Bergen">Strandkaiterminalen, Strandkaien 15, 5013 Bergen</a></div></td></tr><tr><td class="t">20:30後</td><td>入住  <span class="b money">€518.36</span><div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Nedre%20Fjellsmauet%2018%2C%20Bergen">Nedre Fjellsmauet 18, 5018 Bergen</a></div></td></tr></table>
+      <div class="fc"><h3>核對紀錄</h3><ul><li><span class="bad">🚨 Nordfjordeid 10分鐘轉車（車票原文「OBS!」）。落車企定搵「150 Måløy」。官方：Måløy 隻船會等巴士。</span></li><li><span class="warn">⚠️ 星期日：大部分舖頭關門、超市唔賣酒 — 7月4晚買定全日糧水。</span></li></ul></div>
+    </div>
+  </div>
+  <div class="day"><div class="dh"><h2>7月6日 · Bergen → Odda</h2><span class="wd">星期一</span></div>
+    <div class="body">
+      <table class="tt"><tr><td class="t">11:44</td><td>巴士 930 開車 <span class="b na">未買</span> <span class="b money">車飛未買</span><div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Bergen%20busstasjon">Bergen busstasjon（巴士總站）</a></div></td></tr><tr><td class="t">14:52</td><td>到 Odda <div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Odda%20bus%20station">Odda 巴士站</a></div></td></tr><tr><td class="t">15:30後</td><td>入住＋超市補給（聽日行山糧水）  <span class="b money">€573.40／兩晚</span><div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Sjukehusvegen%2020%2C%20Odda">Sjukehusvegen 20, 5750 Odda</a></div></td></tr><tr><td class="t">21:00</td><td>Trolltunga 行山簡介會 <span class="b ok">已訂</span><div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Trolltunga%20Hotel%2C%20Odda">Trolltunga Hotel, Odda</a></div></td></tr></table>
+      <div class="fc"><h3>核對紀錄</h3><ul><li><span class="bad">🚨 Excel入面 Odda 嘅 Airbnb 連結貼咗 Bergen 間房（room id 相同）— 開 App 用「訂單」核對。地址以 Sjukehusvegen 20 為準。</span></li><li><span class="warn">⚠️ 930 車飛未買：Skyss app 買，順手買埋 7月8 05:30 回程。</span></li></ul></div>
+    </div>
+  </div>
+  <div class="day"><div class="dh"><h2>7月7日 · Trolltunga 行山（全日）</h2><span class="wd">星期二</span></div>
+    <div class="body">
+      <table class="tt"><tr><td class="t">07:30</td><td>導賞團出發（集合點以7月6簡介會宣佈為準） <span class="b ok">已訂</span><div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Trolltunga%20Hotel%2C%20Odda">Odda（見簡介會指示）</a></div></td></tr><tr><td class="t">全日</td><td>約20km／10–12小時／爬升約800米 <div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Trolltunga">Trolltunga</a></div></td></tr></table>
+      <div class="fc"><h3>核對紀錄</h3><ul><li><span class="warn">⚠️ 裝備：行山鞋、2L水/人、行山晏＋零食、防水褸褲、保暖層、尿袋。</span></li><li><span class="warn">⚠️ 當晚執定行李（聽朝05:30開車）。</span></li></ul></div>
+    </div>
+  </div>
+  <div class="day"><div class="dh"><h2>7月8日 · Odda → Bergen → ✈ Svolvær</h2><span class="wd">星期三</span></div>
+    <div class="body">
+      <table class="tt"><tr><td class="t">05:30</td><td>巴士 930 開車 <span class="b na">未買</span> <span class="b money">車飛未買</span><div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Odda%20bus%20station">Odda 巴士站</a></div></td></tr><tr><td class="t">08:25</td><td>到 Bergen；行李寄存車站儲物櫃 <div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Bergen%20busstasjon">Bergen busstasjon</a></div></td></tr><tr><td class="t">~15:30</td><td>去機場（Bybanen 輕鐵直達，預1小時） <div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Bergen%20Airport%20Flesland">Bergen lufthavn Flesland</a></div></td></tr><tr><td class="t">17:20</td><td>Widerøe WF616 → WF836（轉機） <span class="b ok">已訂</span><div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Bergen%20Airport%20Flesland">Bergen Airport Flesland</a></div></td></tr><tr><td class="t">20:50</td><td>到 Svolvær 機場 <div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Svolv%C3%A6r%20Airport">Svolvær lufthavn, Helle</a></div></td></tr><tr><td class="t">21:30後</td><td>入住（取匙：Lofoten Suitehotel 櫃台）  <span class="b money">€1011／三晚</span><div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Austnesfjordgata%2040%2C%20Svolv%C3%A6r">Austnesfjordgata 40, 8300 Svolvær</a></div></td></tr></table>
+      <div class="fc"><h3>核對紀錄</h3><ul><li><span class="warn">⚠️ 04:45 起身。Bergen 空窗 08:25–15:30 可去 Bryggen／Fløibanen（行李放車站）。</span></li></ul></div>
+    </div>
+  </div>
+  <div class="day"><div class="dh"><h2>7月9日 · 羅弗敦本地團</h2><span class="wd">星期四</span></div>
+    <div class="body">
+      <table class="tt"><tr><td class="t">08:15–17:30</td><td>本地團（接送點以訂單 email 為準） <span class="b ok">已訂</span><div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Svolv%C3%A6r">Svolvær</a></div></td></tr></table>
+      <div class="fc"><h3>核對紀錄</h3><ul><li><span class="warn">⚠️ 北極圈午夜太陽 — 眼罩。</span></li></ul></div>
+    </div>
+  </div>
+  <div class="day"><div class="dh"><h2>7月10日 · Reine ＋ Reinebringen</h2><span class="wd">星期五</span></div>
+    <div class="body">
+      <table class="tt"><tr><td class="t">09:12</td><td>巴士 742/741 開車 <span class="b na">未買</span> <span class="b money">車飛未買</span><div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Svolv%C3%A6r%20bus%20station">Svolvær 巴士站</a></div></td></tr><tr><td class="t">日間</td><td>Reinebringen 石級行山（約1500級、448米）＋ Reine 村 <div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Reinebringen">Reinebringen trailhead, Reine</a></div></td></tr><tr><td class="t">20:23→23:14</td><td>巴士 742/741 回程 <span class="b na">未買</span> <span class="b money">車飛未買</span><div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Reine%2C%20Norway">Reine → Svolvær</a></div></td></tr></table>
+      <div class="fc"><h3>核對紀錄</h3><ul><li><span class="bad">🚨 班次疏：用 Reis Nordland app 買飛＋核實當日班次；搭失20:23就冇車。</span></li><li><span class="warn">⚠️ 落雨石級滑 — 唔上都有 Reine 村同碼頭影相位。</span></li></ul></div>
+    </div>
+  </div>
+  <div class="day"><div class="dh"><h2>7月11–12日 · 回程 Svolvær → Oslo → 赫爾辛基 → 香港</h2><span class="wd">星期六→日</span></div>
+    <div class="body">
+      <table class="tt"><tr><td class="t">~13:30</td><td>Taxifix app 叫的士去機場 <div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Svolv%C3%A6r%20Airport">Svolvær lufthavn, Helle</a></div></td></tr><tr><td class="t">15:10</td><td>Widerøe WF829 → SAS SK4117（轉機） <span class="b ok">已訂</span><div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Svolv%C3%A6r%20Airport">Svolvær lufthavn</a></div></td></tr><tr><td class="t">19:05</td><td>到 Oslo（轉國際線：重新過安檢，直行去閘口） <div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Oslo%20Airport%20Gardermoen">Oslo lufthavn Gardermoen</a></div></td></tr><tr><td class="t">20:50</td><td>✈ Oslo → 赫爾辛基（23:15到） <span class="b ok">已訂</span><div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Oslo%20Airport%20Gardermoen">Oslo lufthavn</a></div></td></tr><tr><td class="t">00:35</td><td>✈ 赫爾辛基 → 香港 <span class="b ok">已訂</span><div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Helsinki%20Airport">Helsinki-Vantaa</a></div></td></tr><tr><td class="t">17:40</td><td>到香港 <div class="loc">📍 <a href="https://www.google.com/maps/search/?api=1&query=Hong%20Kong%20International%20Airport">HKG</a></div></td></tr></table>
+      <div class="fc"><h3>核對紀錄</h3><ul><li><span class="warn">⚠️ 退稅：>315 NOK 單據帶手，Oslo 機場辦。</span></li></ul></div>
+    </div>
+  </div>
   <section class="block">
-    <h2>📲 呢頁嘅QR（畀隊友掃）</h2>
-    <div style="display:flex; flex-direction:column; align-items:center; gap:8px">
+    <h2>離線用</h2>
+    <a class="dl" href="img/trip-poster.png" download>下載成張詳表PNG（存相簿）</a>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:6px; margin-top:6px">
       <div id="qrsvg"></div>
-      <div style="font-size:.8rem; color:var(--mut); text-align:center">相機App掃 → Safari/Chrome 開。</div>
+      <div style="font-size:.78rem; color:var(--mut)">本頁網址 QR</div>
     </div>
   </section>
-
-  <footer>資料：Norway_trip_summary.xlsx ＋ Fjord Tours 官方票據 ＋ geirangerfjord.no 官方頁 · 生成於 7月3日</footer>
+  <footer>資料：行程Excel＋官方車票，逐項核對 · 7月3日整理</footer>
 </div>
 <script src="qr.js"></script>
 <script>
-try{
-  if(typeof qrcode === 'function'){
-    var qr = qrcode(0,'M');
-    qr.addData(location.href.split('#')[0]);
-    qr.make();
-    document.getElementById('qrsvg').innerHTML = qr.createSvgTag({cellSize:4, margin:4, scalable:true});
-    document.getElementById('qrsvg').firstChild.style.width='min(60vw,220px)';
-    document.getElementById('qrsvg').firstChild.style.height='auto';
-  }
-}catch(e){}
+try{ if(typeof qrcode==='function'){ var q=qrcode(0,'M'); q.addData(location.href.split('#')[0]); q.make();
+  document.getElementById('qrsvg').innerHTML=q.createSvgTag({cellSize:4,margin:4,scalable:true}); } }catch(e){}
 if('serviceWorker' in navigator){ try{ navigator.serviceWorker.register('./sw.js').catch(function(){}); }catch(e){} }
 </script>
 </body>
