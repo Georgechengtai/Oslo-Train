@@ -14,6 +14,13 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Sync Capacitor web assets
+        run: |
+          npm install
+          npx cap sync android
       - name: Build debug APK
         run: |
           cd android
