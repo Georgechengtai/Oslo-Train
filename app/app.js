@@ -150,6 +150,61 @@ const LEG_FIELDS = [
   { k: 'note', label: '備註', type: 'area' }
 ];
 
+/* ---------- Now (today) tab ---------- */
+let nowTimer = null;
+function parseHM(t) { const m = /^([01]?\d|2[0-3]):([0-5]\d)/.exec(t || ''); return m ? (+m[1]) * 60 + (+m[2]) : null; }
+function todayISO() { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+function renderNow() {
+  clearInterval(nowTimer);
+  const el = $('#tab-now');
+  const today = todayISO();
+  let di = trip.days.findIndex(d => d.date === today);
+  let isToday = di >= 0;
+  if (di < 0) di = trip.days.findIndex(d => d.date > today);
+  if (di < 0) di = trip.days.length - 1;
+  const d = trip.days[di];
+  if (!d) { el.innerHTML = '<p class="empty">未有行程。去「行程」tab 加，或者上載車票自動生成。</p>'; return; }
+  const mins = () => { const n = new Date(); return n.getHours() * 60 + n.getMinutes(); };
+  const nextIdx = () => {
+    if (!isToday) return 0;
+    const m = mins();
+    const i = d.legs.findIndex(l => { const t = parseHM(l.t); return t !== null && t >= m; });
+    return i < 0 ? d.legs.length - 1 : i;
+  };
+  function paint() {
+    const ni = nextIdx();
+    const l = d.legs[ni];
+    if (!l) { el.innerHTML = '<p class="empty">呢日未有項目。</p>'; return; }
+    const t = parseHM(l.t);
+    let cd = '';
+    if (isToday && t !== null) {
+      const diff = t - mins();
+      cd = diff > 0 ? `仲有 ${Math.floor(diff / 60) ? Math.floor(diff / 60) + '小時' : ''}${diff % 60}分鐘` : '時間到！';
+    }
+    const prev = d.legs[ni - 1];
+    const origin = prev ? (prev.q || prev.loc) : '';
+    const bigNav = origin
+      ? `<a class="bignav" href="${mapsDir(origin, l.q || l.loc)}">🧭 帶我去（跟藍點行）</a>`
+      : `<a class="bignav" href="${mapsSearch(l.q || l.loc)}">🧭 開地圖（跟藍點行）</a>`;
+    el.innerHTML = `
+      <div class="nowhead">
+        <div class="nowdate">${esc(d.date)} · ${esc(d.label)}${isToday ? '' : '（未到嗰日 — 預習）'}</div>
+        ${cd ? `<div class="nowcd">下一項 ${esc(l.t)} · <b>${cd}</b></div>` : ''}
+      </div>
+      <div class="nowcard">
+        <div class="nowt">${esc(l.t)}</div>
+        <div class="noww">${esc(l.what)}</div>
+        <div class="ll">📍 <a href="${mapsSearch(l.q || l.loc)}">${esc(l.loc)}</a></div>
+        ${l.note ? `<div class="ln">${esc(l.note)}</div>` : ''}
+        ${bigNav}
+      </div>
+      ${d.legs.slice(ni + 1).map(x => `<div class="leg"><div class="lt">${esc(x.t)}</div><div class="lb"><div class="lw">${esc(x.what)}</div><div class="ll">📍 ${esc(x.loc)}</div></div></div>`).join('') || ''}
+      <button class="add" onclick="location.hash='trip'">睇/改成個行程 →</button>`;
+  }
+  paint();
+  nowTimer = setInterval(paint, 30000);
+}
+
 /* ---------- Trip tab ---------- */
 function renderTrip() {
   const el = $('#tab-trip');
@@ -223,7 +278,7 @@ async function renderFiles() {
         <button class="mini" data-a="delF" data-id="${f.id}">🗑</button></span></div>
       <div class="ftags">${(f.tags || []).map(t => `<span class="tag">${esc(t)}</span>`).join('')}
         <button class="tag addtag" data-a="addTag" data-id="${f.id}">＋標籤</button></div>
-      ${(f.meeting || []).length ? `<div class="meet">🤝 票面集合資料：${f.meeting.map(m => `<div>${esc(m)}</div>`).join('')}</div>` : ''}
+      ${(f.meeting || []).length ? `<div class="meet">🤝 票面集合資料（撳「＋」一鍵變行程項）：${f.meeting.map((m, mi) => `<div class="meetrow">${esc(m)} <button class="mini" data-a="meetToLeg" data-id="${f.id}" data-mi="${mi}">＋加入行程</button></div>`).join('')}</div>` : ''}
       <div class="fthumb" id="th${f.id}"></div>
     </div>`).join('')}`;
   $('#fileIn') && ($('#fileIn').onchange = onUpload);
@@ -329,9 +384,31 @@ document.addEventListener('click', async ev => {
     async delLeg() { if (confirm('刪呢項？')) { trip.days[di].legs.splice(li, 1); await save(); renderTrip(); } },
     async linkFile() {
       const files = await DB.allFiles();
-      if (!files.length) return toast('未有檔案 — 去「檔案」tab上載先');
-      const pick = prompt('輸入要連結嘅檔案編號：\n' + files.map(f => `${f.id}: ${f.name}`).join('\n'));
-      if (pick) { const l = trip.days[di].legs[li]; l.fileIds = [...new Set([...(l.fileIds || []), +pick])]; await save(); renderTrip(); toast('已連結'); }
+      if (!files.length) return toast('未有檔案 — 去「車票檔案」tab上載先');
+      const v = await form('連結車票到呢一項', [{ k: 'fid', label: '揀檔案', type: 'select', opts: files.map(f => [String(f.id), f.name]) }]);
+      if (v) { const l = trip.days[di].legs[li]; l.fileIds = [...new Set([...(l.fileIds || []), +v.fid])]; await save(); renderTrip(); toast('已連結'); }
+    },
+    async meetToLeg() {
+      const f = (await DB.allFiles()).find(x => x.id === id);
+      const m = f.meeting[+b.dataset.mi] || '';
+      const venue = (m.split(/[:：]/)[1] || m).split(/Meet|Please|\./)[0].trim();
+      const tGuess = (f.tags.find(t => t.startsWith('🕐')) || '').slice(2);
+      const dayOpts = trip.days.map((d, i) => [String(i), d.date + ' ' + d.label]).concat([['new', '＋新一日']]);
+      const v = await form('由車票生成行程項（可改）', [
+        { k: 'day', label: '邊一日', type: 'select', opts: dayOpts },
+        { k: 't', label: '時間', ph: '09:50' },
+        { k: 'what', label: '事項' },
+        { k: 'loc', label: '地點顯示名' },
+        { k: 'q', label: '精確地址／座標', hint: '完整地址＋郵編＋國家，或「緯度,經度」' },
+        { k: 'note', label: '備註', type: 'area' }
+      ], { day: '0', t: tGuess, what: '集合：' + venue.slice(0, 40), loc: venue.slice(0, 60), q: venue.slice(0, 60), note: '來源：' + f.name });
+      if (!v) return;
+      let dd;
+      if (v.day === 'new') { dd = { date: todayISO(), label: '新一日', legs: [] }; trip.days.push(dd); }
+      else dd = trip.days[+v.day];
+      dd.legs.push({ t: v.t, what: v.what, loc: v.loc, q: v.q, status: 'booked', note: v.note, fileIds: [f.id] });
+      dd.legs.sort((a, b2) => (parseHM(a.t) ?? 9e9) - (parseHM(b2.t) ?? 9e9));
+      await save(); toast('已加入行程'); showTab('trip');
     },
     async renameTrip() { const v = await form('行程名', [{ k: 'name', label: '名' }, { k: 'country', label: '國家（地址precision檢查用）' }], trip); if (v) { Object.assign(trip, v); await save(); renderTrip(); } },
     async addSpot() { const v = await form('加打卡點', [{ k: 'when', label: '幾時' }, { k: 'title', label: '咩位' }, { k: 'q', label: '圖庫搜尋字' }, { k: 'note', label: '注意', type: 'area' }]); if (v) { trip.spots.push(v); await save(); renderSpots(); } },
@@ -368,7 +445,7 @@ const blobToB64 = b => new Promise(r => { const fr = new FileReader(); fr.onload
 function b64ToBlob(b64, type) { const bin = atob(b64); const u = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); return new Blob([u], { type }); }
 
 /* ---------- tabs + boot ---------- */
-const TABS = { trip: renderTrip, files: renderFiles, spots: renderSpots, sos: renderSOS, share: renderShare };
+const TABS = { now: renderNow, trip: renderTrip, files: renderFiles, spots: renderSpots, sos: renderSOS, share: renderShare };
 function showTab(name) {
   document.querySelectorAll('.tabc').forEach(t => t.classList.toggle('on', t.id === 'tab-' + name));
   document.querySelectorAll('#tabbar a').forEach(t => t.classList.toggle('on', t.dataset.t === name));
@@ -393,6 +470,6 @@ window.addEventListener('hashchange', () => { const h = location.hash.slice(1); 
   await save();
   document.querySelectorAll('#tabbar a').forEach(a => a.addEventListener('click', () => showTab(a.dataset.t)));
   const h0 = location.hash.slice(1);
-  showTab(TABS[h0] ? h0 : 'trip');
+  showTab(TABS[h0] ? h0 : 'now');
   if ('serviceWorker' in navigator) { try { navigator.serviceWorker.register('./sw.js').catch(() => {}); } catch (e) {} }
 })();
