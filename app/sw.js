@@ -1,6 +1,6 @@
-const CACHE = 'triphelper-v1';
+const CACHE = 'triphelper-v2';
 const ASSETS = ['./', './index.html', './app.js',
-  './vendor/lz-string.min.js', './vendor/qrcode.min.js', './vendor/pdf.min.js', './vendor/pdf.worker.min.js'];
+  './vendor/lz-string.min.js', './vendor/qrcode.min.js', './vendor/pdf.min.js', './vendor/pdf.worker.min.js', './manifest.json', './icons/icon-192.png', './icons/icon-512.png'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));

@@ -1,0 +1,6 @@
+{
+  "appId": "com.wallace.triphelper",
+  "appName": "Trip Helper",
+  "webDir": "app",
+  "android": { "allowMixedContent": false }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Trip Helper 旅程領航",
+  "short_name": "TripHelper",
+  "description": "單人旅程助手：車票分析、逐點導航、打卡、緊急電話、離線可用",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b3d2e",
+  "theme_color": "#0b3d2e",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
